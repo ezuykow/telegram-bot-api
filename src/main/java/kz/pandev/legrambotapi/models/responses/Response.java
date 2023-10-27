@@ -15,7 +15,7 @@ import java.io.Serializable;
  */
 @Getter
 @ToString
-public abstract class Response implements Serializable {
+public class Response implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
@@ -47,6 +47,4 @@ public abstract class Response implements Serializable {
     @SerializedName("parameters")
     @Nullable
     private ResponseParameters parameters;
-
-    protected Response() {}
 }

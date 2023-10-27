@@ -2,23 +2,21 @@ package kz.pandev.legrambotapi.models.responses.extending;
 
 import com.google.gson.annotations.SerializedName;
 import kz.pandev.legrambotapi.models.responses.Response;
-import kz.pandev.legrambotapi.models.temp.Update;
+import kz.pandev.legrambotapi.models.types.WebhookInfo;
 import lombok.Getter;
 import lombok.ToString;
 
-import java.util.List;
-
 /**
- * Telegram bot API server response to GetUpdates request
+ * Telegram bot API server response to GetWebhookInfo request
  * @author ezuykow
  */
 @Getter
 @ToString
-public class GetUpdatesResponse extends Response {
+public class GetWebhookInfoResponse extends Response {
 
     /**
-     * Result as {@link List} of {@link Update}'s
+     * Result as {@link WebhookInfo}
      */
     @SerializedName("result")
-    private List<Update> updates;
+    private WebhookInfo webhookInfo;
 }
