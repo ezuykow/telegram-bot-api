@@ -11,27 +11,21 @@ import java.io.Serial;
 import java.io.Serializable;
 
 /**
- * This object represents a file ready to be downloaded.
- * The file can be downloaded via the link, which can be obtained by method
- * {@link kz.pandev.legrambotapi.configure.TelegramBot#getFullFilePath(File)}. It is guaranteed that the link will
- * be valid for at least 1 hour (for default Telegram bot API server). When the link expires, a new one can be
- * requested by executing GetFile request.
- * The file content as byte array can be obtained by method
- * {@link kz.pandev.legrambotapi.configure.TelegramBot#getFileContent(File)}
+ * This object represents a voice note
  * @author ezuykow
  */
 @Getter
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString
-public class File implements Serializable {
+public class Voice implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
 
     /**
      * Unique identifier for this file, which is supposed to be the same over time and for different bots.
-     * Can't be used to download or reuse the file
+     * Can't be used to download or reuse the file.
      */
     @SerializedName("file_unique_id")
     @EqualsAndHashCode.Include
@@ -44,16 +38,22 @@ public class File implements Serializable {
     private String fileId;
 
     /**
+     * Duration of the audio in seconds as defined by sender
+     */
+    @SerializedName("duration")
+    private Integer duration;
+
+    /**
+     * Optional. MIME type of the file as defined by sender
+     */
+    @SerializedName("mime_type")
+    @Nullable
+    private String mimeType;
+
+    /**
      * Optional. File size in bytes
      */
     @SerializedName("file_size")
     @Nullable
     private Long fileSize;
-
-    /**
-     * Optional. File path on Telegram bot API server
-     */
-    @SerializedName("file_path")
-    @Nullable
-    private String filePath;
 }
