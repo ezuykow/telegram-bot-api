@@ -1,4 +1,4 @@
-package kz.pandev.legrambotapi.models.types;
+package kz.pandev.legrambotapi.models.types.input;
 
 import lombok.Getter;
 import lombok.Setter;
