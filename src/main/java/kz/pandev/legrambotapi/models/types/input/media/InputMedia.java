@@ -1,11 +1,15 @@
 package kz.pandev.legrambotapi.models.types.input.media;
 
+import com.google.gson.annotations.SerializedName;
 import kz.pandev.legrambotapi.exceptions.WrongParameterTypeException;
 import kz.pandev.legrambotapi.models.types.input.InputFile;
 import kz.pandev.legrambotapi.models.types.message.MessageEntity;
 import kz.pandev.legrambotapi.utils.ParseMode;
 import kz.pandev.legrambotapi.utils.UniqueNameGenerator;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.ToString;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
 import java.io.Serial;
@@ -19,33 +23,103 @@ import java.util.Map;
  * This object represents the content of a media message to be sent
  * @author ezuykow
  */
+@EqualsAndHashCode
+@ToString
 public abstract class InputMedia<T extends InputMedia<T>> implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
 
+    /**
+     * Prefix of generated names
+     */
     private static final String NAME_GENERATOR_PREFIX = "InputMedia";
+
+    /**
+     * Telegram attach tag
+     */
     private static final String TELEGRAM_ATTACH_TAG = "attach://";
 
+    /**
+     * Type of the media. Possible types:
+     * <li> photo
+     * <li> video
+     * <li> animation
+     * <li> audio
+     * <li> document
+     */
+    @SerializedName("type")
     private final String type;
 
+    /**
+     * File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended),
+     * pass an HTTP URL for Telegram to get a file from the Internet,
+     * or pass “attach://&lt;file_attach_name>&gt; to upload a new one using multipart/form-data under
+     * &lt;file_attach_name&gt; name
+     */
+    @SerializedName("media")
     private final String media;
 
+    /**
+     * Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is
+     * supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size.
+     * A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded
+     * using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file,
+     * so you can pass “attach://&lt;file_attach_name&gt;” if the thumbnail was uploaded using
+     * multipart/form-data under &lt;file_attach_name&gt;.
+     */
+    @SerializedName("thumbnail")
     private String thumbnail;
 
+    /**
+     * Optional. Caption of the photo to be sent, 0-1024 characters after entities parsing
+     */
+    @SerializedName("caption")
+    @Nullable
     private String caption;
 
+    /**
+     * Optional. Mode for parsing entities in the caption
+     * @see ParseMode
+     */
+    @SerializedName("parse_mode")
+    @Nullable
     private String parseMode;
 
+    /**
+     * Optional. List of special entities that appear in the caption, which can be specified
+     * instead of parse_mode
+     */
+    @SerializedName("caption_entities")
+    @Nullable
     private List<MessageEntity> captionEntities;
 
+    /**
+     * Attached thumbnails
+     */
     @Getter
     private final transient  Map<String, Object> attachments;
+
+    /**
+     * Media file, if type of constructor parameter "media" is java.io.File or byte[]
+     */
     @Getter
     private transient InputFile inputFile;
+
+    /**
+     * Generated attach name of inputFile
+     */
     @Getter
     private transient String inputFileAttachName;
+
+    /**
+     * Name of inputFile if present, or default file name
+     */
     private transient String fileName;
+
+    /**
+     * Mime type of inputFile if present, or default file name
+     */
     private transient String contentType;
 
     InputMedia(String type, Object media) {
@@ -70,6 +144,11 @@ public abstract class InputMedia<T extends InputMedia<T>> implements Serializabl
 
     //region API
 
+    /**
+     * Attach thumbnail
+     * @param thumbnail thumbnail as {@link File}
+     * @return this (T extends InputMedia)
+     */
     @SuppressWarnings("unchecked") /*Unchecked cast - no error*/
     public T thumbnail(File thumbnail) {
         String attachName = UniqueNameGenerator.next(NAME_GENERATOR_PREFIX);
@@ -78,6 +157,11 @@ public abstract class InputMedia<T extends InputMedia<T>> implements Serializabl
         return (T) this;
     }
 
+    /**
+     * Attach thumbnail
+     * @param thumbnail thumbnail as byte array
+     * @return this (T extends InputMedia)
+     */
     @SuppressWarnings("unchecked") /*Unchecked cast - no error*/
     public T thumbnail(byte[] thumbnail) {
         String attachName = UniqueNameGenerator.next(NAME_GENERATOR_PREFIX);
@@ -86,24 +170,45 @@ public abstract class InputMedia<T extends InputMedia<T>> implements Serializabl
         return (T) this;
     }
 
+    /**
+     * Set caption
+     * @param caption new caption
+     * @return this (T extends InputMedia)
+     */
     @SuppressWarnings("unchecked") /*Unchecked cast - no error*/
     public T caption(String caption) {
         this.caption = caption;
         return (T) this;
     }
 
+    /**
+     * Mode for parsing entities in the caption
+     * @param parseMode {@link ParseMode}
+     * @return this (T extends InputMedia)
+     */
     @SuppressWarnings("unchecked") /*Unchecked cast - no error*/
     public T parseMode(ParseMode parseMode) {
         this.parseMode = parseMode.name();
         return (T) this;
     }
 
+    /**
+     * Set special entities that appear in the caption
+     * @apiNote instead of parseMode
+     * @param entities caption entities as {@link MessageEntity}
+     * @return this (T extends InputMedia)
+     */
     @SuppressWarnings("unchecked") /*Unchecked cast - no error*/
     public T captionEntities(MessageEntity... entities) {
         this.captionEntities = Arrays.asList(entities);
         return (T) this;
     }
 
+    /**
+     * Set file name of this media
+     * @param fileName new file name
+     * @return this (T extends InputMedia)
+     */
     @SuppressWarnings("unchecked") /*Unchecked cast - no error*/
     public T fileName(String fileName) {
         if (inputFile != null) {
@@ -113,6 +218,11 @@ public abstract class InputMedia<T extends InputMedia<T>> implements Serializabl
         return (T) this;
     }
 
+    /**
+     * Set content type of this media
+     * @param contentType new content type
+     * @return this (T extends InputMedia)
+     */
     @SuppressWarnings("unchecked") /*Unchecked cast - no error*/
     public T contentType(String contentType) {
         if (inputFile != null) {
@@ -122,17 +232,29 @@ public abstract class InputMedia<T extends InputMedia<T>> implements Serializabl
         return (T) this;
     }
 
+    /**
+     * @return file name of this media if present or default file name
+     */
     public String getFileName() {
         return (fileName != null && !fileName.isEmpty()) ? fileName : getDefaultFileName();
     }
 
+    /**
+     * @return content (mime) type of this media if present or default content type
+     */
     public String getContentType() {
         return (contentType != null && !contentType.isEmpty()) ? contentType : getDefaultContentType();
     }
 
-    abstract protected String getDefaultFileName();
+    /**
+     * @return default file name for this media
+     */
+    protected abstract String getDefaultFileName();
 
-    abstract protected String getDefaultContentType();
+    /**
+     * @return default content (mime) type for this media
+     */
+    protected abstract String getDefaultContentType();
 
     //endregion
 }

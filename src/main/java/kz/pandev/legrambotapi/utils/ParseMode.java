@@ -60,6 +60,7 @@ public enum ParseMode {
      */
     MarkdownV2,
 
+    //todo сделать красиво
     /**
      * HTML parse mode <br>
      * @apiNote The following tags are currently supported: <br>

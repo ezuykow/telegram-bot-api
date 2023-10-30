@@ -1,7 +1,7 @@
 package kz.pandev.legrambotapi.models.requests;
 
 import kz.pandev.legrambotapi.models.responses.Response;
-import kz.pandev.legrambotapi.utils.FileNames;
+import kz.pandev.legrambotapi.utils.DefaultFileNames;
 import kz.pandev.legrambotapi.utils.MimeTypes;
 import lombok.Getter;
 
@@ -65,7 +65,7 @@ public abstract class Request<T extends Request<T, R>, R extends Response> {
      * @return content parameter file name
      */
     public String getFileName() {
-        return FileNames.GENERAL_FILE_NAME;
+        return DefaultFileNames.GENERAL_FILE_NAME;
     }
 
     /**
