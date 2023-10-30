@@ -6,7 +6,7 @@ import kz.pandev.legrambotapi.exceptions.RequestExecutionException;
 import kz.pandev.legrambotapi.configure.Callback;
 import kz.pandev.legrambotapi.models.temp.Cancellable;
 import kz.pandev.legrambotapi.models.requests.Request;
-import kz.pandev.legrambotapi.models.types.input.InputFile;
+import kz.pandev.legrambotapi.models.types.common.input.InputFile;
 import kz.pandev.legrambotapi.models.responses.Response;
 import okhttp3.*;
 import org.jetbrains.annotations.NotNull;

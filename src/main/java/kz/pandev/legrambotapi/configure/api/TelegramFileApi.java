@@ -1,7 +1,7 @@
 package kz.pandev.legrambotapi.configure.api;
 
 import kz.pandev.legrambotapi.exceptions.BadFilePathException;
-import kz.pandev.legrambotapi.models.types.File;
+import kz.pandev.legrambotapi.models.types.common.File;
 import kz.pandev.legrambotapi.utils.Constant;
 
 import java.io.ByteArrayOutputStream;

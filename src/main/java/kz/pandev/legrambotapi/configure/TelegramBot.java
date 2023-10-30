@@ -8,7 +8,7 @@ import kz.pandev.legrambotapi.models.requests.extending.GetUpdates;
 import kz.pandev.legrambotapi.models.temp.Cancellable;
 import kz.pandev.legrambotapi.models.requests.Request;
 import kz.pandev.legrambotapi.models.responses.Response;
-import kz.pandev.legrambotapi.models.types.File;
+import kz.pandev.legrambotapi.models.types.common.File;
 import kz.pandev.legrambotapi.configure.updates_handler.UpdatesHandler;
 import kz.pandev.legrambotapi.configure.updates_handler.UpdatesListener;
 import kz.pandev.legrambotapi.utils.Constant;

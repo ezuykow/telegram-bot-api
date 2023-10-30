@@ -2,7 +2,7 @@ package kz.pandev.legrambotapi.models.requests.extending.webhook;
 
 import kz.pandev.legrambotapi.models.requests.Request;
 import kz.pandev.legrambotapi.models.responses.Response;
-import kz.pandev.legrambotapi.models.types.input.InputFile;
+import kz.pandev.legrambotapi.models.types.common.input.InputFile;
 import kz.pandev.legrambotapi.utils.MimeTypes;
 import lombok.Getter;
 

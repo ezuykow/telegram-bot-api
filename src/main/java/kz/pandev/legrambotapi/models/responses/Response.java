@@ -1,7 +1,7 @@
 package kz.pandev.legrambotapi.models.responses;
 
 import com.google.gson.annotations.SerializedName;
-import kz.pandev.legrambotapi.models.types.ResponseParameters;
+import kz.pandev.legrambotapi.models.types.common.ResponseParameters;
 import lombok.Getter;
 import lombok.ToString;
 import org.jetbrains.annotations.Nullable;

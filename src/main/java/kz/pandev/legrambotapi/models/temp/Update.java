@@ -1,7 +1,7 @@
 package kz.pandev.legrambotapi.models.temp;
 
 import com.google.gson.annotations.SerializedName;
-import kz.pandev.legrambotapi.models.types.message.Message;
+import kz.pandev.legrambotapi.models.types.common.message.Message;
 import lombok.Getter;
 
 import java.io.Serial;
