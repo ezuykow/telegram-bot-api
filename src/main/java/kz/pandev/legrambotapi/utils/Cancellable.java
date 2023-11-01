@@ -1,4 +1,4 @@
-package kz.pandev.legrambotapi.models.temp;
+package kz.pandev.legrambotapi.utils;
 
 /**
  * Represents an objects, which can be cancelled

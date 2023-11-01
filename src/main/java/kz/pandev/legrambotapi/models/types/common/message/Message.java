@@ -1,15 +1,16 @@
 package kz.pandev.legrambotapi.models.types.common.message;
 
 import com.google.gson.annotations.SerializedName;
-import kz.pandev.legrambotapi.models.temp.*;
+import kz.pandev.legrambotapi.models.temp.Game;
+import kz.pandev.legrambotapi.models.types.payments.Invoice;
+import kz.pandev.legrambotapi.models.types.passport.PassportData;
+import kz.pandev.legrambotapi.models.types.payments.SuccessfulPayment;
 import kz.pandev.legrambotapi.models.types.common.*;
 import kz.pandev.legrambotapi.models.types.common.chat.Chat;
 import kz.pandev.legrambotapi.models.types.common.chat.ChatShared;
 import kz.pandev.legrambotapi.models.types.common.forum.*;
-import kz.pandev.legrambotapi.models.types.forum.*;
 import kz.pandev.legrambotapi.models.types.common.inline.keyboard.InlineKeyboardMarkup;
 import kz.pandev.legrambotapi.models.types.common.poll.Poll;
-import kz.pandev.legrambotapi.models.types.stickers.Sticker;
 import kz.pandev.legrambotapi.models.types.common.user.User;
 import kz.pandev.legrambotapi.models.types.common.user.UserShared;
 import kz.pandev.legrambotapi.models.types.common.video.Video;
@@ -19,6 +20,7 @@ import kz.pandev.legrambotapi.models.types.common.video.chat.VideoChatParticipan
 import kz.pandev.legrambotapi.models.types.common.video.chat.VideoChatScheduled;
 import kz.pandev.legrambotapi.models.types.common.video.chat.VideoChatStarted;
 import kz.pandev.legrambotapi.models.types.common.web.app.WebAppData;
+import kz.pandev.legrambotapi.models.types.stickers.Sticker;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;

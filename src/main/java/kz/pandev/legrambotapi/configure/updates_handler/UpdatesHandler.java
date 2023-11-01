@@ -6,8 +6,8 @@ import kz.pandev.legrambotapi.exceptions.handler.ExceptionHandler;
 import kz.pandev.legrambotapi.configure.Callback;
 import kz.pandev.legrambotapi.models.requests.extending.GetUpdates;
 import kz.pandev.legrambotapi.models.responses.extending.GetUpdatesResponse;
-import kz.pandev.legrambotapi.models.temp.Cancellable;
-import kz.pandev.legrambotapi.models.temp.Update;
+import kz.pandev.legrambotapi.utils.Cancellable;
+import kz.pandev.legrambotapi.models.types.Update;
 
 import java.util.List;
 import java.util.logging.Level;

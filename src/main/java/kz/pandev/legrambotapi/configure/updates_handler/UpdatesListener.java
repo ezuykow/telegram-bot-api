@@ -1,6 +1,6 @@
 package kz.pandev.legrambotapi.configure.updates_handler;
 
-import kz.pandev.legrambotapi.models.temp.Update;
+import kz.pandev.legrambotapi.models.types.Update;
 
 import java.util.List;
 
