@@ -1,7 +1,7 @@
 package kz.pandev.legrambotapi.models.types.common.message;
 
 import com.google.gson.annotations.SerializedName;
-import kz.pandev.legrambotapi.models.temp.Game;
+import kz.pandev.legrambotapi.models.types.games.Game;
 import kz.pandev.legrambotapi.models.types.payments.Invoice;
 import kz.pandev.legrambotapi.models.types.passport.PassportData;
 import kz.pandev.legrambotapi.models.types.payments.SuccessfulPayment;
