@@ -1,4 +1,4 @@
-package kz.pandev.legrambotapi.configure.updates_handler;
+package kz.pandev.legrambotapi.configure.updates.handler;
 
 import kz.pandev.legrambotapi.configure.TelegramBot;
 import kz.pandev.legrambotapi.exceptions.UnsuccessfulGetUpdatesRequestException;
