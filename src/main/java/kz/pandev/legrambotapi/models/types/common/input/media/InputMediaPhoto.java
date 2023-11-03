@@ -1,8 +1,8 @@
 package kz.pandev.legrambotapi.models.types.common.input.media;
 
 import com.google.gson.annotations.SerializedName;
-import kz.pandev.legrambotapi.utils.DefaultFileNames;
-import kz.pandev.legrambotapi.utils.MimeTypes;
+import kz.pandev.legrambotapi.utils.DefaultFileName;
+import kz.pandev.legrambotapi.utils.MimeType;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.jetbrains.annotations.Nullable;
@@ -54,19 +54,19 @@ public class InputMediaPhoto extends InputMedia<InputMediaPhoto> implements Seri
     }
 
     /**
-     * @return {@link DefaultFileNames#PHOTO_FILE_NAME}
+     * @return {@link DefaultFileName#PHOTO_FILE_NAME}
      */
     @Override
     protected String getDefaultFileName() {
-        return DefaultFileNames.PHOTO_FILE_NAME;
+        return DefaultFileName.PHOTO_FILE_NAME;
     }
 
     /**
-     * @return {@link MimeTypes#PHOTO_MIME_TYPE}
+     * @return {@link MimeType#PHOTO_MIME_TYPE}
      */
     @Override
     protected String getDefaultContentType() {
-        return MimeTypes.PHOTO_MIME_TYPE;
+        return MimeType.PHOTO_MIME_TYPE;
     }
 
     //endregion

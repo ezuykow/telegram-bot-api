@@ -1,7 +1,7 @@
-package kz.pandev.legrambotapi.models.requests.extending.webhook;
+package kz.pandev.legrambotapi.models.requests.webhook;
 
 import kz.pandev.legrambotapi.models.requests.Request;
-import kz.pandev.legrambotapi.models.responses.extending.GetWebhookInfoResponse;
+import kz.pandev.legrambotapi.models.responses.webhook.GetWebhookInfoResponse;
 
 /**
  * Use this method to get current webhook status.

@@ -2,10 +2,7 @@ package kz.pandev.legrambotapi.models.types.common.poll;
 
 import com.google.gson.annotations.SerializedName;
 import kz.pandev.legrambotapi.models.types.common.message.MessageEntity;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.Serial;
@@ -24,6 +21,23 @@ public class Poll implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
+
+    /**
+     * Type of poll
+     */
+    @Getter
+    @RequiredArgsConstructor
+    public enum Type {
+        @SerializedName("quiz")
+        QUIZ("quiz"),
+        @SerializedName("regular")
+        REGULAR("regular");
+
+        /**
+         * Text value for sending to Telegram server
+         */
+        private final String textVal;
+    }
 
     @SerializedName("id")
     @EqualsAndHashCode.Include
@@ -63,7 +77,7 @@ public class Poll implements Serializable {
      * Poll type, currently can be “regular” or “quiz”
      */
     @SerializedName("type")
-    private String type;
+    private Type type;
 
     /**
      * True, if the poll allows multiple answers

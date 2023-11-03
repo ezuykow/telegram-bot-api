@@ -1,8 +1,8 @@
 package kz.pandev.legrambotapi.models.types.common.input.media;
 
 import com.google.gson.annotations.SerializedName;
-import kz.pandev.legrambotapi.utils.DefaultFileNames;
-import kz.pandev.legrambotapi.utils.MimeTypes;
+import kz.pandev.legrambotapi.utils.DefaultFileName;
+import kz.pandev.legrambotapi.utils.MimeType;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.jetbrains.annotations.Nullable;
@@ -92,7 +92,7 @@ public class InputMediaAudio extends InputMedia<InputMediaAudio> implements Seri
      */
     @Override
     protected String getDefaultFileName() {
-        return DefaultFileNames.AUDIO_FILE_NAME;
+        return DefaultFileName.AUDIO_FILE_NAME;
     }
 
     /**
@@ -100,7 +100,7 @@ public class InputMediaAudio extends InputMedia<InputMediaAudio> implements Seri
      */
     @Override
     protected String getDefaultContentType() {
-        return MimeTypes.AUDIO_MIME_TYPE;
+        return MimeType.AUDIO_MIME_TYPE;
     }
 
     //endregion

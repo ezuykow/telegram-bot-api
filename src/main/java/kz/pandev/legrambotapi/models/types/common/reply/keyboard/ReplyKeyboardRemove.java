@@ -1,6 +1,7 @@
 package kz.pandev.legrambotapi.models.types.common.reply.keyboard;
 
 import com.google.gson.annotations.SerializedName;
+import kz.pandev.legrambotapi.models.types.Keyboard;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,7 +21,7 @@ import java.io.Serializable;
 @Setter
 @EqualsAndHashCode
 @ToString
-public class ReplyKeyboardRemove implements Serializable {
+public class ReplyKeyboardRemove implements Keyboard, Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;

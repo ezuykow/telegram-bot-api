@@ -1,8 +1,8 @@
 package kz.pandev.legrambotapi.models.requests;
 
 import kz.pandev.legrambotapi.models.responses.Response;
-import kz.pandev.legrambotapi.utils.DefaultFileNames;
-import kz.pandev.legrambotapi.utils.MimeTypes;
+import kz.pandev.legrambotapi.utils.DefaultFileName;
+import kz.pandev.legrambotapi.utils.MimeType;
 import lombok.Getter;
 
 import java.util.LinkedHashMap;
@@ -12,7 +12,6 @@ import java.util.Map;
  * General request to Telegram bot API server
  * @author ezuykow
  */
-@SuppressWarnings("unused") /*Unused methods warning*/
 @Getter
 public abstract class Request<T extends Request<T, R>, R extends Response> {
 
@@ -65,20 +64,20 @@ public abstract class Request<T extends Request<T, R>, R extends Response> {
      * @return content parameter file name
      */
     public String getFileName() {
-        return DefaultFileNames.GENERAL_FILE_NAME;
+        return DefaultFileName.GENERAL_FILE_NAME;
     }
 
     /**
      * @return content parameter mime type
      */
     public String getContentMimeType() {
-        return MimeTypes.GENERAL_MIME_TYPE;
+        return MimeType.GENERAL_MIME_TYPE;
     }
 
     /**
      * @return request timeout in seconds
      */
-    public int getTimeout() {
+    public Integer getTimeout() {
         return 0;
     }
 

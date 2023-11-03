@@ -1,7 +1,7 @@
-package kz.pandev.legrambotapi.models.requests.extending;
+package kz.pandev.legrambotapi.models.requests.common.get;
 
 import kz.pandev.legrambotapi.models.requests.Request;
-import kz.pandev.legrambotapi.models.responses.extending.GetUpdatesResponse;
+import kz.pandev.legrambotapi.models.responses.common.get.GetUpdatesResponse;
 import lombok.Getter;
 
 import java.util.Arrays;
@@ -11,7 +11,6 @@ import java.util.List;
  * Request for Telegram bot API method "getUpdates"
  * @author ezuykow
  */
-@SuppressWarnings({"unused", "UnusedReturnValue"}) /*Unused methods, unused return value of method warnings*/
 @Getter
 public class GetUpdates extends Request<GetUpdates, GetUpdatesResponse> {
 
@@ -22,16 +21,16 @@ public class GetUpdates extends Request<GetUpdates, GetUpdatesResponse> {
      * The negative offset can be specified to retrieve updates starting from -offset update from the end of the
      * updates queue. All previous updates will be forgotten.
      */
-    private int offset;
+    private Integer offset;
     /**
      * Limits the number of updates to be retrieved. Values between 1-100 are accepted. Defaults to 100.
      */
-    private int limit;
+    private Integer limit;
     /**
      * Timeout in seconds for long polling. Defaults to 0, i.e. usual short polling.
      * Should be positive, short polling should be used for testing purposes only.
      */
-    private int timeout;
+    private Integer timeout;
     /**
      * List of the update types you want your bot to receive.
      * Specify an empty list to receive all update types except chat_member (default). If not specified, the previous

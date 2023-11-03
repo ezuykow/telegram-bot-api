@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import kz.pandev.legrambotapi.configure.api.TelegramBotClient;
 import kz.pandev.legrambotapi.configure.api.TelegramFileApi;
 import kz.pandev.legrambotapi.exceptions.handler.ExceptionHandler;
-import kz.pandev.legrambotapi.models.requests.extending.GetUpdates;
+import kz.pandev.legrambotapi.models.requests.common.get.GetUpdates;
 import kz.pandev.legrambotapi.utils.Cancellable;
 import kz.pandev.legrambotapi.models.requests.Request;
 import kz.pandev.legrambotapi.models.responses.Response;

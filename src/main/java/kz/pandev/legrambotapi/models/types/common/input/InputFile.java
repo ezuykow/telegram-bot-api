@@ -1,5 +1,6 @@
 package kz.pandev.legrambotapi.models.types.common.input;
 
+import kz.pandev.legrambotapi.utils.MimeType;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -28,7 +29,7 @@ public class InputFile {
     private String fileName;
     /**
      * Mime type of file to be uploaded
-     * @see kz.pandev.legrambotapi.utils.MimeTypes
+     * @see MimeType
      */
     private String contentType;
 

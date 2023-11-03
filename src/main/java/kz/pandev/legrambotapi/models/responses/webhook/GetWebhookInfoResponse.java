@@ -1,4 +1,4 @@
-package kz.pandev.legrambotapi.models.responses.extending;
+package kz.pandev.legrambotapi.models.responses.webhook;
 
 import com.google.gson.annotations.SerializedName;
 import kz.pandev.legrambotapi.models.responses.Response;
@@ -11,7 +11,7 @@ import lombok.ToString;
  * @author ezuykow
  */
 @Getter
-@ToString
+@ToString(callSuper = true)
 public class GetWebhookInfoResponse extends Response {
 
     /**

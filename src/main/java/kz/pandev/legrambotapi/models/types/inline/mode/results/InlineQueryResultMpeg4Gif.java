@@ -2,7 +2,7 @@ package kz.pandev.legrambotapi.models.types.inline.mode.results;
 
 import com.google.gson.annotations.SerializedName;
 import kz.pandev.legrambotapi.models.types.common.message.MessageEntity;
-import kz.pandev.legrambotapi.utils.ParseMode;
+import kz.pandev.legrambotapi.utils.enums.ParseMode;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;

@@ -1,10 +1,16 @@
-package kz.pandev.legrambotapi.utils;
+package kz.pandev.legrambotapi.utils.enums;
+
+import com.google.gson.annotations.SerializedName;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 /**
- * Modes for parsing entities in the message's texts
+ * Modes for parsing entities in the message's texts.
+ * For sending to Telegram server use {@link ParseMode#getTextVal()}
  * @author ezuykow
  */
-@SuppressWarnings("java:S115") /*Bad objects names for compatibility with Telegram bot API */
+@Getter
+@RequiredArgsConstructor
 public enum ParseMode {
 
     /**
@@ -28,7 +34,8 @@ public enum ParseMode {
      * <li>To escape characters '_', '*', '`', '[' outside of an entity, prepend the characters '\' before them. <br>
      * <li>Escaping inside entities is not allowed, so entity must be closed first and reopened again: use _snake_\__case_ for italic snake_case and *2*\**2=4* for bold 2*2=4. <br>
      */
-    Markdown,
+    @SerializedName("Markdown")
+    MARKDOWN("Markdown"),
 
     /**
      * Markdown v2 parse mode <br>
@@ -58,7 +65,8 @@ public enum ParseMode {
      * <li>A valid emoji must be provided as an alternative value for the custom emoji. The emoji will be shown instead of the custom emoji in places where a custom emoji cannot be displayed (e.g., system notifications) or if the message is forwarded by a non-premium user. It is recommended to use the emoji from the emoji field of the custom emoji sticker. <br>
      * <li>Custom emoji entities can only be used by bots that purchased additional usernames on Fragment. <br>
      */
-    MarkdownV2,
+    @SerializedName("MarkdownV2")
+    MARKDOWN_V2("MarkdownV2"),
 
     //todo сделать красиво
     /**
@@ -86,5 +94,11 @@ public enum ParseMode {
      * <li>A valid emoji must be used as the content of the tg-emoji tag. The emoji will be shown instead of the custom emoji in places where a custom emoji cannot be displayed (e.g., system notifications) or if the message is forwarded by a non-premium user. It is recommended to use the emoji from the emoji field of the custom emoji sticker. <br>
      * <li>Custom emoji entities can only be used by bots that purchased additional usernames on Fragment. <br>
      */
-    HTML
+    @SerializedName("HTML")
+    HTML("HTML");
+
+    /**
+     * Text value of parse mode for sending to Telegram server
+     */
+    private final String textVal;
 }

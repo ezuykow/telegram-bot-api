@@ -5,7 +5,7 @@ import kz.pandev.legrambotapi.exceptions.WrongParameterTypeException;
 import kz.pandev.legrambotapi.models.types.common.input.InputFile;
 import kz.pandev.legrambotapi.models.types.common.message.MessageEntity;
 import kz.pandev.legrambotapi.utils.Constant;
-import kz.pandev.legrambotapi.utils.ParseMode;
+import kz.pandev.legrambotapi.utils.enums.ParseMode;
 import kz.pandev.legrambotapi.utils.UniqueNameGenerator;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

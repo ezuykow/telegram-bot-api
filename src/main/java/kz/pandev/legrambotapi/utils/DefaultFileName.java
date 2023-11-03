@@ -5,7 +5,7 @@ package kz.pandev.legrambotapi.utils;
  * @author ezuykow
  */
 @SuppressWarnings("unused") /*Unused constant warning*/
-public final class DefaultFileNames {
+public final class DefaultFileName {
 
     public static final String PHOTO_FILE_NAME = "image.jpg";
     public static final String AUDIO_FILE_NAME = "audio.mp3";
@@ -15,5 +15,5 @@ public final class DefaultFileNames {
     public static final String GIF_FILE_NAME = "gif.gif";
     public static final String GENERAL_FILE_NAME = DOC_FILE_NAME;
 
-    private DefaultFileNames() {}
+    private DefaultFileName() {}
 }

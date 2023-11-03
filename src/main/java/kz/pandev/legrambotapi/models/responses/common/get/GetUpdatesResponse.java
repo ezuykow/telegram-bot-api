@@ -1,4 +1,4 @@
-package kz.pandev.legrambotapi.models.responses.extending;
+package kz.pandev.legrambotapi.models.responses.common.get;
 
 import com.google.gson.annotations.SerializedName;
 import kz.pandev.legrambotapi.models.responses.Response;
@@ -13,7 +13,7 @@ import java.util.List;
  * @author ezuykow
  */
 @Getter
-@ToString
+@ToString(callSuper = true)
 public class GetUpdatesResponse extends Response {
 
     /**

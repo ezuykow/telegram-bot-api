@@ -1,8 +1,8 @@
 package kz.pandev.legrambotapi.models.types.common.input.media;
 
 import com.google.gson.annotations.SerializedName;
-import kz.pandev.legrambotapi.utils.DefaultFileNames;
-import kz.pandev.legrambotapi.utils.MimeTypes;
+import kz.pandev.legrambotapi.utils.DefaultFileName;
+import kz.pandev.legrambotapi.utils.MimeType;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.jetbrains.annotations.Nullable;
@@ -126,7 +126,7 @@ public class InputMediaVideo extends InputMedia<InputMediaVideo> implements Seri
      */
     @Override
     protected String getDefaultFileName() {
-        return DefaultFileNames.VIDEO_FILE_NAME;
+        return DefaultFileName.VIDEO_FILE_NAME;
     }
 
     /**
@@ -134,7 +134,7 @@ public class InputMediaVideo extends InputMedia<InputMediaVideo> implements Seri
      */
     @Override
     protected String getDefaultContentType() {
-        return MimeTypes.VIDEO_MIME_TYPE;
+        return MimeType.VIDEO_MIME_TYPE;
     }
 
     //endregion

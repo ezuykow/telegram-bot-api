@@ -5,7 +5,7 @@ package kz.pandev.legrambotapi.utils;
  * @author ezuykow
  */
 @SuppressWarnings("unused") /*Unused constant warning*/
-public final class MimeTypes {
+public final class MimeType {
 
     public static final String GENERAL_MIME_TYPE = "application/x-www-form-urlencoded";
     public static final String PHOTO_MIME_TYPE = "image/jpeg";
@@ -15,5 +15,5 @@ public final class MimeTypes {
     public static final String VOICE_MIME_TYPE = "audio/ogg";
     public static final String GIF_MIME_TYPE = "image/gif";
 
-    private MimeTypes() {}
+    private MimeType() {}
 }

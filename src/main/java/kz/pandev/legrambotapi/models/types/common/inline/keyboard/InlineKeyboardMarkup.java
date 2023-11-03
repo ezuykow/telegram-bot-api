@@ -1,6 +1,7 @@
 package kz.pandev.legrambotapi.models.types.common.inline.keyboard;
 
 import com.google.gson.annotations.SerializedName;
+import kz.pandev.legrambotapi.models.types.Keyboard;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,7 +19,7 @@ import java.util.List;
 @Setter
 @EqualsAndHashCode
 @ToString
-public class InlineKeyboardMarkup implements Serializable {
+public class InlineKeyboardMarkup implements Keyboard, Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
