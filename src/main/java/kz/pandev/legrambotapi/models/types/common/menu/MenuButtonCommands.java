@@ -23,6 +23,6 @@ public class MenuButtonCommands extends MenuButton implements Serializable {
     private static final String MENU_BUTTON_TYPE = "commands";
 
     public MenuButtonCommands() {
-        this.type = MENU_BUTTON_TYPE;
+        super(MENU_BUTTON_TYPE);
     }
 }

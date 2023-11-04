@@ -1,12 +1,14 @@
 package kz.pandev.legrambotapi.models.requests.common;
 
+import kz.pandev.legrambotapi.exceptions.WrongParameterTypeException;
 import kz.pandev.legrambotapi.models.requests.Request;
-import kz.pandev.legrambotapi.models.responses.common.MessageIdResponse;
+import kz.pandev.legrambotapi.models.responses.MessageIdResponse;
 import kz.pandev.legrambotapi.models.types.Keyboard;
 import kz.pandev.legrambotapi.models.types.common.message.MessageEntity;
 import kz.pandev.legrambotapi.utils.enums.ParseMode;
 import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -23,36 +25,44 @@ public class CopyMessage extends Request<CopyMessage, MessageIdResponse> {
     /**
      * Optional. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
      */
+    @Nullable
     private Integer messageThreadId;
     /**
      * Optional. New caption for media, 0-1024 characters after entities parsing. If not specified, the original caption is kept
      */
+    @Nullable
     private String caption;
     /**
      * Optional. Mode for parsing entities in the new caption.
      * @see ParseMode
      */
+    @Nullable
     private ParseMode parseMode;
     /**
      * Optional. List of special entities that appear in the new caption, which can be specified instead of parse_mode
      */
+    @Nullable
     private List<MessageEntity> captionEntities;
     /**
      * Optional. Sends the message silently. Users will receive a notification with no sound.
      */
+    @Nullable
     private Boolean disableNotification;
     /**
      * Optional. Pass True if the message should be sent even if the specified replied-to message is not found
      */
+    @Nullable
     private Boolean allowSendingWithoutReply;
     /**
      * Optional. If the message is a reply, ID of the original message
      */
+    @Nullable
     private Integer replyToMessageId;
     /**
      * Optional. Additional interface options. An inline keyboard, custom reply keyboard,
      * instructions to remove reply keyboard or to force a reply from the user.
      */
+    @Nullable
     private Keyboard replyMarkup;
 
     /**
@@ -62,9 +72,15 @@ public class CopyMessage extends Request<CopyMessage, MessageIdResponse> {
      */
     public CopyMessage(@NotNull Object chatId, @NotNull Object fromChatId, int messageId) {
         super(MessageIdResponse.class);
-        addParameter("chat_id", chatId);
-        addParameter("from_chat_id", fromChatId);
-        addParameter("message_id", messageId);
+        if ((chatId instanceof Number || chatId instanceof String)
+                && (fromChatId instanceof Number || fromChatId instanceof String)) {
+            addParameter("chat_id", chatId);
+            addParameter("from_chat_id", fromChatId);
+            addParameter("message_id", messageId);
+        } else {
+            throw new WrongParameterTypeException("Type of parameters chatId and fromChatId must be Number or " +
+                    "String (if it's chat username)");
+        }
     }
 
     //region API

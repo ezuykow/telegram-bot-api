@@ -1,7 +1,7 @@
 package kz.pandev.legrambotapi.models.requests;
 
 import kz.pandev.legrambotapi.exceptions.WrongParameterTypeException;
-import kz.pandev.legrambotapi.models.responses.common.send.SendResponse;
+import kz.pandev.legrambotapi.models.responses.SendResponse;
 import kz.pandev.legrambotapi.models.types.Keyboard;
 import lombok.Getter;
 

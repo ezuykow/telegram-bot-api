@@ -6,6 +6,7 @@ import kz.pandev.legrambotapi.utils.DefaultFileName;
 import kz.pandev.legrambotapi.utils.MimeType;
 import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
 
@@ -22,10 +23,12 @@ public class SendVideoNote extends AbstractMultipartRequest<SendVideoNote> {
     /**
      * Optional. Duration of sent video in seconds
      */
+    @Nullable
     private Integer duration;
     /**
      * Optional. Video width and height, i.e. diameter of the video message
      */
+    @Nullable
     private Integer length;
 
     /**

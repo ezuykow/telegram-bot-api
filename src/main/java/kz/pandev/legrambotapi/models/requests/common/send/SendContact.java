@@ -3,6 +3,7 @@ package kz.pandev.legrambotapi.models.requests.common.send;
 import kz.pandev.legrambotapi.models.requests.AbstractSendRequest;
 import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * Use this method to send phone contacts. On success, the sent Message is returned.
@@ -12,31 +13,23 @@ import org.jetbrains.annotations.NotNull;
 public class SendContact extends AbstractSendRequest<SendContact> {
 
     /**
-     * Contact's phone number
-     */
-    private final String phoneNumber;
-    /**
-     * Contact's first name
-     */
-    private final String firstName;
-    /**
      * Optional. Contact's last name
      */
+    @Nullable
     private String lastName;
     /**
      * Optional. Additional data about the contact in the form of a vCard, 0-2048 bytes
      */
+    @Nullable
     private String vCard;
 
     /**
      * @param chatId Unique identifier for the target chat or username of the target channel (in the format @channelusername)
-     * @param phoneNumber {@link SendContact#phoneNumber}
-     * @param firstName {@link SendContact#firstName}
+     * @param phoneNumber Contact's phone number
+     * @param firstName Contact's first name
      */
     public SendContact(@NotNull Object chatId, @NotNull String phoneNumber, @NotNull String firstName) {
         super(chatId);
-        this.phoneNumber = phoneNumber;
-        this.firstName = firstName;
         addParameter("phone_number", phoneNumber);
         addParameter("first_name", firstName);
     }

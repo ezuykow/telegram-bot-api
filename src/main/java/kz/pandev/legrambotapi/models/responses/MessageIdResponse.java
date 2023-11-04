@@ -1,4 +1,4 @@
-package kz.pandev.legrambotapi.models.responses.common;
+package kz.pandev.legrambotapi.models.responses;
 
 import com.google.gson.annotations.SerializedName;
 import kz.pandev.legrambotapi.models.responses.Response;

@@ -7,6 +7,7 @@ import kz.pandev.legrambotapi.utils.MimeType;
 import kz.pandev.legrambotapi.utils.enums.ParseMode;
 import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
 import java.util.List;
@@ -23,18 +24,22 @@ public class SendPhoto extends AbstractMultipartRequest<SendPhoto> {
     /**
      * Optional. Photo caption (may also be used when resending photos by file_id), 0-1024 characters after entities parsing
      */
+    @Nullable
     private String caption;
     /**
      * Optional. Mode for parsing entities in the photo caption.
      */
+    @Nullable
     private ParseMode parseMode;
     /**
      * Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
      */
+    @Nullable
     private List<MessageEntity> captionEntities;
     /**
      * Optional. Pass True if the photo needs to be covered with a spoiler animation
      */
+    @Nullable
     private Boolean hasSpoiler;
 
     /**

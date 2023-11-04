@@ -5,6 +5,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -34,4 +35,9 @@ public class BotCommand implements Serializable {
      */
     @SerializedName("description")
     private String description;
+
+    public BotCommand(@NotNull String command, @NotNull String description) {
+        this.command = command;
+        this.description = description;
+    }
 }

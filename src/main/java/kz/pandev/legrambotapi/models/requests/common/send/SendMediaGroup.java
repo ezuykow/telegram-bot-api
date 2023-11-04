@@ -1,10 +1,11 @@
 package kz.pandev.legrambotapi.models.requests.common.send;
 
 import kz.pandev.legrambotapi.models.requests.Request;
-import kz.pandev.legrambotapi.models.responses.common.MessagesResponse;
+import kz.pandev.legrambotapi.models.responses.MessagesResponse;
 import kz.pandev.legrambotapi.models.types.common.input.media.InputMedia;
 import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Map;
 
@@ -24,18 +25,22 @@ public class SendMediaGroup extends Request<SendMediaGroup, MessagesResponse> {
     /**
      * Optional. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
      */
+    @Nullable
     private Integer messageThreadId;
     /**
      * Optional. Sends messages silently. Users will receive a notification with no sound.
      */
+    @Nullable
     private Boolean disableNotification;
     /**
      * Optional. If the messages are a reply, ID of the original message
      */
+    @Nullable
     private Integer replyToMessageId;
     /**
      * Optional. Pass True if the message should be sent even if the specified replied-to message is not found
      */
+    @Nullable
     private Boolean allowSendingWithoutReply;
 
     /**

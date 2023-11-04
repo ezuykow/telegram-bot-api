@@ -5,6 +5,7 @@ import kz.pandev.legrambotapi.models.responses.Response;
 import kz.pandev.legrambotapi.utils.enums.ChatAction;
 import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * Use this method when you need to tell the user that something is happening on the bot's side.
@@ -18,6 +19,7 @@ public class SendChatAction extends Request<SendChatAction, Response> {
     /**
      * Optional. Unique identifier for the target message thread; supergroups only
      */
+    @Nullable
     private Integer messageThreadId;
 
     /**

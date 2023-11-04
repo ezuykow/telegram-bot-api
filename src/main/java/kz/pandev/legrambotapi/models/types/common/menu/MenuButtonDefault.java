@@ -23,6 +23,6 @@ public class MenuButtonDefault extends MenuButton implements Serializable {
     private static final String MENU_BUTTON_TYPE = "default";
 
     public MenuButtonDefault() {
-        this.type = MENU_BUTTON_TYPE;
+        super(MENU_BUTTON_TYPE);
     }
 }

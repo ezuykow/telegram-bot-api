@@ -2,6 +2,7 @@ package kz.pandev.legrambotapi.models.requests.common.send;
 
 import kz.pandev.legrambotapi.models.requests.AbstractSendRequest;
 import lombok.Getter;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * Use this method to send an animated emoji that will display a random value. On success, the sent Message is returned.
@@ -16,6 +17,7 @@ public class SendDice extends AbstractSendRequest<SendDice> {
      * Dice can have values 1-6 for “🎲”, “🎯” and “🎳”, values 1-5 for “🏀” and “⚽”,
      * and values 1-64 for “🎰”. Defaults to “🎲”
      */
+    @Nullable
     private String emoji;
 
     /**

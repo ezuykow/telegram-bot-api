@@ -5,6 +5,7 @@ import kz.pandev.legrambotapi.models.types.common.message.MessageEntity;
 import kz.pandev.legrambotapi.utils.enums.ParseMode;
 import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -19,14 +20,17 @@ public class SendMessage extends AbstractSendRequest<SendMessage> {
      * Optional. Mode for parsing entities in the message text. See formatting options for more details.
      * @see ParseMode
      */
+    @Nullable
     private ParseMode parseMode;
     /**
      * Optional. List of special entities that appear in message text, which can be specified instead of parse_mode
      */
+    @Nullable
     private List<MessageEntity> entities;
     /**
      * Optional. Disables link previews for links in this message
      */
+    @Nullable
     private Boolean disableWebPagePreview;
 
     /**

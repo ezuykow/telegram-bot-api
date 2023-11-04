@@ -1,9 +1,11 @@
 package kz.pandev.legrambotapi.models.requests.common;
 
+import kz.pandev.legrambotapi.exceptions.WrongParameterTypeException;
 import kz.pandev.legrambotapi.models.requests.Request;
-import kz.pandev.legrambotapi.models.responses.common.send.SendResponse;
+import kz.pandev.legrambotapi.models.responses.SendResponse;
 import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * Use this method to forward messages of any kind. Service messages can't be forwarded.
@@ -16,10 +18,12 @@ public class ForwardMessage extends Request<ForwardMessage, SendResponse> {
     /**
      * Optional. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
      */
+    @Nullable
     private Integer messageThreadId;
     /**
      * Optional. Sends the message silently. Users will receive a notification with no sound.
      */
+    @Nullable
     private Boolean disableNotification;
 
     /**
@@ -29,9 +33,15 @@ public class ForwardMessage extends Request<ForwardMessage, SendResponse> {
      */
     public ForwardMessage(@NotNull Object chatId, @NotNull Object fromChatId, int messageId) {
         super(SendResponse.class);
-        addParameter("chat_id", chatId);
-        addParameter("from_chat_id", fromChatId);
-        addParameter("message_id", messageId);
+        if ((chatId instanceof Number || chatId instanceof String)
+                && (fromChatId instanceof Number || fromChatId instanceof String)) {
+            addParameter("chat_id", chatId);
+            addParameter("from_chat_id", fromChatId);
+            addParameter("message_id", messageId);
+        } else {
+            throw new WrongParameterTypeException("Type of parameters chatId and fromChatId must be Number or " +
+                    "String (if it's chat username)");
+        }
     }
 
     //region API

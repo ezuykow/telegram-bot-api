@@ -1,0 +1,22 @@
+package kz.pandev.legrambotapi.models.responses.common.get;
+
+import com.google.gson.annotations.SerializedName;
+import kz.pandev.legrambotapi.models.responses.Response;
+import kz.pandev.legrambotapi.models.types.common.chat.Chat;
+import lombok.Getter;
+import lombok.ToString;
+
+/**
+ * Telegram bot API server response to GetChat request
+ * @author ezuykow
+ */
+@Getter
+@ToString(callSuper = true)
+public class GetChatResponse extends Response {
+
+    /**
+     * Result as {@link Chat}
+     */
+    @SerializedName("result")
+    private Chat chat;
+}

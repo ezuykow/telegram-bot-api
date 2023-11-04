@@ -38,7 +38,7 @@ public class MenuButtonWebApp extends MenuButton implements Serializable {
     private WebAppInfo webApp;
 
     public MenuButtonWebApp(String text, WebAppInfo webAppInfo) {
-        this.type = MENU_BUTTON_TYPE;
+        super(MENU_BUTTON_TYPE);
         this.text = text;
         this.webApp = webAppInfo;
     }

@@ -8,6 +8,7 @@ import kz.pandev.legrambotapi.utils.MimeType;
 import kz.pandev.legrambotapi.utils.enums.ParseMode;
 import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
 import java.util.List;
@@ -27,18 +28,22 @@ public class SendVoice extends AbstractMultipartRequest<SendVoice> {
     /**
      * Optional. Voice message caption, 0-1024 characters after entities parsing
      */
+    @Nullable
     private String caption;
     /**
      * Optional. Mode for parsing entities in the voice message caption
      */
+    @Nullable
     private ParseMode parseMode;
     /**
      * Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
      */
+    @Nullable
     private List<MessageEntity> captionEntities;
     /**
      * Optional. Duration of the voice message in seconds
      */
+    @Nullable
     private Integer duration;
 
     /**

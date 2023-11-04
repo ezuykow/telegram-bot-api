@@ -1,4 +1,4 @@
-package kz.pandev.legrambotapi.models.responses.common;
+package kz.pandev.legrambotapi.models.responses;
 
 import com.google.gson.annotations.SerializedName;
 import kz.pandev.legrambotapi.models.responses.Response;
@@ -26,6 +26,4 @@ public class MessagesResponse extends Response implements Serializable {
      */
     @SerializedName("result")
     private List<Message> messages;
-
-    protected MessagesResponse() {}
 }

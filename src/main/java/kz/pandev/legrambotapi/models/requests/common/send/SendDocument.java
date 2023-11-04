@@ -8,6 +8,7 @@ import kz.pandev.legrambotapi.utils.MimeType;
 import kz.pandev.legrambotapi.utils.enums.ParseMode;
 import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
 import java.util.List;
@@ -26,18 +27,22 @@ public class SendDocument extends AbstractMultipartRequest<SendDocument> {
      * Optional. Document caption (may also be used when resending documents by file_id),
      * 0-1024 characters after entities parsing
      */
+    @Nullable
     private String caption;
     /**
      * Optional. Mode for parsing entities in the document caption.
      */
+    @Nullable
     private ParseMode parseMode;
     /**
      * Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
      */
+    @Nullable
     private List<MessageEntity> captionEntities;
     /**
      * Optional. Disables automatic server-side content type detection for files uploaded using multipart/form-data
      */
+    @Nullable
     private Boolean disableContentTypeDetection;
 
     /**
