@@ -14,7 +14,7 @@ import org.jetbrains.annotations.Nullable;
 public class SetCustomEmojiStickerSetThumbnail extends Request<SetCustomEmojiStickerSetThumbnail, Response> {
 
     /**
-     * Custom emoji identifier of a sticker from the sticker set; pass an empty string to
+     * Optional. Custom emoji identifier of a sticker from the sticker set; pass an empty string to
      * drop the thumbnail and use the first sticker as the thumbnail.
      */
     @Nullable
