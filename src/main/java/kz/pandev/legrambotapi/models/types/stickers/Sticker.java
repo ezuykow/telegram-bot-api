@@ -3,10 +3,7 @@ package kz.pandev.legrambotapi.models.types.stickers;
 import com.google.gson.annotations.SerializedName;
 import kz.pandev.legrambotapi.models.types.common.File;
 import kz.pandev.legrambotapi.models.types.common.PhotoSize;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.Serial;
@@ -30,13 +27,39 @@ public class Sticker implements Serializable {
      * The type of the sticker is independent from its format, which is determined by
      * the fields isAnimated and isVideo.
      */
+    @Getter
+    @RequiredArgsConstructor
     public enum Type {
         @SerializedName("regular")
-        REGULAR,
+        REGULAR("regular"),
         @SerializedName("mask")
-        MASK,
+        MASK("mask"),
         @SerializedName("custom_emoji")
-        CUSTOM_EMOJI
+        CUSTOM_EMOJI("custom_emoji");
+
+        /**
+         * Text value for send to Telegram
+         */
+        private final String textVal;
+    }
+
+    /**
+     * Sticker format
+     */
+    @Getter
+    @RequiredArgsConstructor
+    public enum Format {
+        @SerializedName("static")
+        STATIC("static"),
+        @SerializedName("animated")
+        ANIMATED("animated"),
+        @SerializedName("video")
+        VIDEO("video");
+
+        /**
+         * Text value for send to Telegram
+         */
+        private final String textVal;
     }
 
     /**
