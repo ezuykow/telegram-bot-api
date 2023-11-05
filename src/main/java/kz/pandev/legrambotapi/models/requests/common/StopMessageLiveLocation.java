@@ -2,7 +2,6 @@ package kz.pandev.legrambotapi.models.requests.common;
 
 import kz.pandev.legrambotapi.exceptions.WrongParameterTypeException;
 import kz.pandev.legrambotapi.models.requests.Request;
-import kz.pandev.legrambotapi.models.requests.common.edit.EditMessageLiveLocation;
 import kz.pandev.legrambotapi.models.responses.Response;
 import kz.pandev.legrambotapi.models.responses.SendResponse;
 import kz.pandev.legrambotapi.models.types.common.inline.keyboard.InlineKeyboardMarkup;

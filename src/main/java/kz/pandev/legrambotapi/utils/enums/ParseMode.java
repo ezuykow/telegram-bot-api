@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 /**
  * Modes for parsing entities in the message's texts.
  * For sending to Telegram server use {@link ParseMode#getTextVal()}
+ * @see <a href="https://core.telegram.org/bots/api#formatting-options">Formatting options docs</a>
  * @author ezuykow
  */
 @Getter
@@ -68,22 +69,21 @@ public enum ParseMode {
     @SerializedName("MarkdownV2")
     MARKDOWN_V2("MarkdownV2"),
 
-    //todo сделать красиво
     /**
      * HTML parse mode <br>
      * @apiNote The following tags are currently supported: <br>
-     * <b>bold</b>, <strong>bold</strong> <br>
-     * <i>italic</i>, <em>italic</em> <br>
-     * <u>underline</u>, <ins>underline</ins> <br>
-     * <s>strikethrough</s>, <strike>strikethrough</strike>, <del>strikethrough</del> <br>
-     * <span class="tg-spoiler">spoiler</span>, <tg-spoiler>spoiler</tg-spoiler> <br>
-     * <b>bold <i>italic bold <s>italic bold strikethrough <span class="tg-spoiler">italic bold strikethrough spoiler</span></s> <u>underline italic bold</u></i> bold</b> <br>
-     * <a href="http://www.example.com/">inline URL</a> <br>
-     * <a href="tg://user?id=123456789">inline mention of a user</a> <br>
-     * <tg-emoji emoji-id="5368324170671202286">👍</tg-emoji> <br>
-     * <code>inline fixed-width code</code> <br>
-     * <pre>pre-formatted fixed-width code block</pre> <br>
-     * <pre><code class="language-python">pre-formatted fixed-width code block written in the Python programming language</code></pre> <br>
+     * &lt;b&gt;bold&lt;/b>, &lt;strong>bold&lt;/strong> <br>
+     * &lt;i>italic&lt;/i>, &lt;em>italic&lt;/em> <br>
+     * &lt;u&lt;underline&lt;/u>, &lt;ins>underline&lt;/ins> <br>
+     * &lt;s>strikethrough&lt;/s>, &lt;strike>strikethrough&lt;/strike>, &lt;del>strikethrough&lt;/del> <br>
+     * &lt;span class="tg-spoiler">spoiler&lt;/span>, &lt;tg-spoiler>spoiler&lt;/tg-spoiler> <br>
+     * &lt;b>bold &lt;i>italic bold &lt;s>italic bold strikethrough &lt;span class="tg-spoiler">italic bold strikethrough spoiler&lt;/span>&lt;/s> &lt;u>underline italic bold&lt;/u>&lt;/i> bold&lt;/b> <br>
+     * &lt;a href="http://www.example.com/">inline URL&lt;/a> <br>
+     * &lt;a href="tg://user?id=123456789">inline mention of a user&lt;/a> <br>
+     * &lt;tg-emoji emoji-id="5368324170671202286">👍&lt;/tg-emoji> <br>
+     * &lt;code>inline fixed-width code&lt;/code> <br>
+     * &lt;pre>pre-formatted fixed-width code block&lt;/pre> <br>
+     * &lt;pre>&lt;code class="language-python">pre-formatted fixed-width code block written in the Python programming language&lt;/code>&lt;/pre> <br>
      * <br> Please note: <br>
      * <li>Only the tags mentioned above are currently supported. <br>
      * <li>All <, > and & symbols that are not a part of a tag or an HTML entity must be replaced with the corresponding HTML entities (< with &lt;, > with &gt; and & with &amp;). <br>

@@ -1,17 +1,8 @@
 package kz.pandev.legrambotapi.models.requests.games;
 
-import com.google.gson.annotations.SerializedName;
 import kz.pandev.legrambotapi.models.requests.Request;
 import kz.pandev.legrambotapi.models.responses.games.GetGameHighScoresResponse;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import java.io.Serial;
-import java.io.Serializable;
 
 /**
  * Use this method to get data for high score tables. Will return the score of

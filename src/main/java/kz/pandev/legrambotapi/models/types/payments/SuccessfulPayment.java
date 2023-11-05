@@ -1,7 +1,6 @@
 package kz.pandev.legrambotapi.models.types.payments;
 
 import com.google.gson.annotations.SerializedName;
-import kz.pandev.legrambotapi.models.types.inline.mode.results.InlineQueryResultAudio;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;

@@ -4,7 +4,6 @@ import com.google.gson.annotations.SerializedName;
 import kz.pandev.legrambotapi.models.types.payments.LabeledPrice;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.Setter;
 import lombok.ToString;
 import org.jetbrains.annotations.NotNull;
 

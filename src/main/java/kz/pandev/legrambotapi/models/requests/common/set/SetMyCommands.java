@@ -1,7 +1,6 @@
 package kz.pandev.legrambotapi.models.requests.common.set;
 
 import kz.pandev.legrambotapi.models.requests.Request;
-import kz.pandev.legrambotapi.models.requests.common.AnswerCallbackQuery;
 import kz.pandev.legrambotapi.models.responses.Response;
 import kz.pandev.legrambotapi.models.types.common.bot.command.BotCommand;
 import kz.pandev.legrambotapi.models.types.common.bot.command.scope.BotCommandScope;

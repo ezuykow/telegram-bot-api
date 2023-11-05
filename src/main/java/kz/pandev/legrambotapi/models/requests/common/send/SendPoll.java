@@ -7,7 +7,6 @@ import kz.pandev.legrambotapi.utils.enums.ParseMode;
 import lombok.Getter;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Arrays;
 import java.util.List;
 
 /**
