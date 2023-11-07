@@ -77,7 +77,7 @@ public abstract class Request<T extends Request<T, R>, R extends Response> {
     /**
      * @return request timeout in seconds
      */
-    public Integer getTimeout() {
+    public int getTimeout() {
         return 0;
     }
 

@@ -33,8 +33,7 @@ public class GetUpdates extends Request<GetUpdates, GetUpdatesResponse> {
      * Timeout in seconds for long polling. Defaults to 0, i.e. usual short polling.
      * Should be positive, short polling should be used for testing purposes only.
      */
-    @Nullable
-    private Integer timeout;
+    private int timeout;
     /**
      * List of the update types you want your bot to receive.
      * Specify an empty list to receive all update types except chat_member (default). If not specified, the previous

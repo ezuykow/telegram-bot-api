@@ -38,20 +38,20 @@ public class MaskPosition implements Serializable {
      * Shift by X-axis measured in widths of the mask scaled to the face size, from left to right.
      * For example, choosing -1.0 will place mask just to the left of the default mask position.
      */
-    @SerializedName("point")
+    @SerializedName("x_shift")
     private final Float xShift;
 
     /**
      * Shift by Y-axis measured in heights of the mask scaled to the face size, from top to bottom.
      * For example, 1.0 will place the mask just below the default mask position.
      */
-    @SerializedName("point")
+    @SerializedName("y_shift")
     private final Float yShift;
 
     /**
      * Mask scaling coefficient. For example, 2.0 means double size.
      */
-    @SerializedName("point")
+    @SerializedName("scale")
     private final Float scale;
 
     public MaskPosition(Point point, float xShift, float yShift, float scale) {
