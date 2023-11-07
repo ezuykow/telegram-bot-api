@@ -20,7 +20,7 @@ import java.io.Serializable;
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString
-public class ChosenInlineResults implements Serializable {
+public class ChosenInlineResult implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;

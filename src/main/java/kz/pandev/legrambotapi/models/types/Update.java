@@ -7,7 +7,7 @@ import kz.pandev.legrambotapi.models.types.common.chat.member.ChatMemberUpdated;
 import kz.pandev.legrambotapi.models.types.common.message.Message;
 import kz.pandev.legrambotapi.models.types.common.poll.Poll;
 import kz.pandev.legrambotapi.models.types.common.poll.PollAnswer;
-import kz.pandev.legrambotapi.models.types.inline.mode.ChosenInlineResults;
+import kz.pandev.legrambotapi.models.types.inline.mode.ChosenInlineResult;
 import kz.pandev.legrambotapi.models.types.inline.mode.InlineQuery;
 import kz.pandev.legrambotapi.models.types.payments.PreCheckoutQuery;
 import kz.pandev.legrambotapi.models.types.payments.shipping.ShippingQuery;
@@ -87,7 +87,7 @@ public class Update implements Serializable {
      */
     @SerializedName("chosen_inline_result")
     @Nullable
-    private ChosenInlineResults chosenInlineResults;
+    private ChosenInlineResult chosenInlineResult;
 
     /**
      * Optional. New incoming callback query
