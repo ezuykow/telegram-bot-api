@@ -1,8 +1,8 @@
 package kz.pandev.legrambotapi.models.requests;
 
 import kz.pandev.legrambotapi.models.responses.Response;
-import kz.pandev.legrambotapi.utils.DefaultFileName;
-import kz.pandev.legrambotapi.utils.MimeType;
+import kz.pandev.legrambotapi.utils.enums.DefaultFileName;
+import kz.pandev.legrambotapi.utils.enums.MimeType;
 import lombok.Getter;
 
 import java.util.LinkedHashMap;
@@ -64,14 +64,14 @@ public abstract class Request<T extends Request<T, R>, R extends Response> {
      * @return content parameter file name
      */
     public String getFileName() {
-        return DefaultFileName.GENERAL_FILE_NAME;
+        return DefaultFileName.GENERAL.getTextVal();
     }
 
     /**
      * @return content parameter mime type
      */
     public String getContentMimeType() {
-        return MimeType.GENERAL_MIME_TYPE;
+        return MimeType.GENERAL.getTextVal();
     }
 
     /**

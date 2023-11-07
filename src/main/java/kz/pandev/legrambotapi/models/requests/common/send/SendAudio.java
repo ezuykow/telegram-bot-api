@@ -3,8 +3,8 @@ package kz.pandev.legrambotapi.models.requests.common.send;
 import kz.pandev.legrambotapi.exceptions.WrongParameterTypeException;
 import kz.pandev.legrambotapi.models.requests.AbstractMultipartRequest;
 import kz.pandev.legrambotapi.models.types.common.message.MessageEntity;
-import kz.pandev.legrambotapi.utils.DefaultFileName;
-import kz.pandev.legrambotapi.utils.MimeType;
+import kz.pandev.legrambotapi.utils.enums.DefaultFileName;
+import kz.pandev.legrambotapi.utils.enums.MimeType;
 import kz.pandev.legrambotapi.utils.enums.ParseMode;
 import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
@@ -148,6 +148,7 @@ public class SendAudio extends AbstractMultipartRequest<SendAudio> {
      * @return this request
      * @throws WrongParameterTypeException when type of thumbnail not java.io.File or byte[]
      */
+    @Override
     public SendAudio thumbnail(@NotNull Object thumbnail) {
         if (thumbnail instanceof File || thumbnail instanceof byte[]) {
             return super.thumbnail(thumbnail);
@@ -165,19 +166,19 @@ public class SendAudio extends AbstractMultipartRequest<SendAudio> {
     }
 
     /**
-     * @return {@link DefaultFileName#AUDIO_FILE_NAME}
+     * @return {@link DefaultFileName#AUDIO} text value
      */
     @Override
     public String getDefaultFileName() {
-        return DefaultFileName.AUDIO_FILE_NAME;
+        return DefaultFileName.AUDIO.getTextVal();
     }
 
     /**
-     * @return {@link MimeType#AUDIO_MIME_TYPE}
+     * @return {@link MimeType#AUDIO} text value
      */
     @Override
     public String getDefaultContentType() {
-        return MimeType.AUDIO_MIME_TYPE;
+        return MimeType.AUDIO.getTextVal();
     }
 
     //endregion

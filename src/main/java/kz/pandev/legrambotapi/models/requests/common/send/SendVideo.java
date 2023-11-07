@@ -3,8 +3,8 @@ package kz.pandev.legrambotapi.models.requests.common.send;
 import kz.pandev.legrambotapi.exceptions.WrongParameterTypeException;
 import kz.pandev.legrambotapi.models.requests.AbstractMultipartRequest;
 import kz.pandev.legrambotapi.models.types.common.message.MessageEntity;
-import kz.pandev.legrambotapi.utils.DefaultFileName;
-import kz.pandev.legrambotapi.utils.MimeType;
+import kz.pandev.legrambotapi.utils.enums.DefaultFileName;
+import kz.pandev.legrambotapi.utils.enums.MimeType;
 import kz.pandev.legrambotapi.utils.enums.ParseMode;
 import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
@@ -179,6 +179,7 @@ public class SendVideo extends AbstractMultipartRequest<SendVideo> {
      * @return this request
      * @throws WrongParameterTypeException when type of thumbnail not java.io.File or byte[]
      */
+    @Override
     public SendVideo thumbnail(@NotNull Object thumbnail) {
         if (thumbnail instanceof File || thumbnail instanceof byte[]) {
             return super.thumbnail(thumbnail);
@@ -196,19 +197,19 @@ public class SendVideo extends AbstractMultipartRequest<SendVideo> {
     }
 
     /**
-     * @return {@link DefaultFileName#VIDEO_FILE_NAME}
+     * @return {@link DefaultFileName#VIDEO} text value
      */
     @Override
     public String getDefaultFileName() {
-        return DefaultFileName.VIDEO_FILE_NAME;
+        return DefaultFileName.VIDEO.getTextVal();
     }
 
     /**
-     * @return {@link MimeType#VIDEO_MIME_TYPE}
+     * @return {@link MimeType#VIDEO} text value
      */
     @Override
     public String getDefaultContentType() {
-        return MimeType.VIDEO_MIME_TYPE;
+        return MimeType.VIDEO.getTextVal();
     }
 
     //endregion

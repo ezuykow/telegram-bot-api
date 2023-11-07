@@ -25,7 +25,6 @@ import java.util.concurrent.TimeUnit;
  * This object represents Telegram Bot entity
  * @author ezuykow
  */
-@SuppressWarnings("unused") /*Unused methods warning*/
 public class TelegramBot {
 
     /**

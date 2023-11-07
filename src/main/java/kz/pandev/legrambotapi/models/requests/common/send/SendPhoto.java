@@ -2,8 +2,8 @@ package kz.pandev.legrambotapi.models.requests.common.send;
 
 import kz.pandev.legrambotapi.models.requests.AbstractMultipartRequest;
 import kz.pandev.legrambotapi.models.types.common.message.MessageEntity;
-import kz.pandev.legrambotapi.utils.DefaultFileName;
-import kz.pandev.legrambotapi.utils.MimeType;
+import kz.pandev.legrambotapi.utils.enums.DefaultFileName;
+import kz.pandev.legrambotapi.utils.enums.MimeType;
 import kz.pandev.legrambotapi.utils.enums.ParseMode;
 import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
@@ -118,19 +118,19 @@ public class SendPhoto extends AbstractMultipartRequest<SendPhoto> {
     }
 
     /**
-     * @return {@link DefaultFileName#PHOTO_FILE_NAME}
+     * @return {@link DefaultFileName#PHOTO} text value
      */
     @Override
     public String getDefaultFileName() {
-        return DefaultFileName.PHOTO_FILE_NAME;
+        return DefaultFileName.PHOTO.getTextVal();
     }
 
     /**
-     * @return {@link MimeType#PHOTO_MIME_TYPE}
+     * @return {@link MimeType#PHOTO} text value
      */
     @Override
     public String getDefaultContentType() {
-        return MimeType.PHOTO_MIME_TYPE;
+        return MimeType.PHOTO.getTextVal();
     }
 
     //endregion

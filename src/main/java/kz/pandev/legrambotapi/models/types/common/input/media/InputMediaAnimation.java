@@ -1,8 +1,8 @@
 package kz.pandev.legrambotapi.models.types.common.input.media;
 
 import com.google.gson.annotations.SerializedName;
-import kz.pandev.legrambotapi.utils.DefaultFileName;
-import kz.pandev.legrambotapi.utils.MimeType;
+import kz.pandev.legrambotapi.utils.enums.DefaultFileName;
+import kz.pandev.legrambotapi.utils.enums.MimeType;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.jetbrains.annotations.Nullable;
@@ -109,7 +109,7 @@ public class InputMediaAnimation extends InputMedia<InputMediaAnimation> impleme
      */
     @Override
     protected String getDefaultFileName() {
-        return DefaultFileName.GIF_FILE_NAME;
+        return DefaultFileName.GIF.getTextVal();
     }
 
     /**
@@ -117,7 +117,7 @@ public class InputMediaAnimation extends InputMedia<InputMediaAnimation> impleme
      */
     @Override
     protected String getDefaultContentType() {
-        return MimeType.GIF_MIME_TYPE;
+        return MimeType.GIF.getTextVal();
     }
 
     //endregion

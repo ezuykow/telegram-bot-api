@@ -3,7 +3,7 @@ package kz.pandev.legrambotapi.models.requests.webhook;
 import kz.pandev.legrambotapi.models.requests.Request;
 import kz.pandev.legrambotapi.models.responses.Response;
 import kz.pandev.legrambotapi.models.types.common.input.InputFile;
-import kz.pandev.legrambotapi.utils.MimeType;
+import kz.pandev.legrambotapi.utils.enums.MimeType;
 import lombok.Getter;
 
 import java.io.File;
@@ -80,7 +80,7 @@ public class SetWebhook extends Request<SetWebhook, Response> {
      */
     public SetWebhook certificate(File certificate) {
         this.isMultipart = true;
-        this.certificate = new InputFile(certificate, CERTIFICATE_STRING, MimeType.GENERAL_MIME_TYPE);
+        this.certificate = new InputFile(certificate, CERTIFICATE_STRING, MimeType.GENERAL.getTextVal());
         return addParameter(CERTIFICATE_STRING, this.certificate);
     }
 
@@ -91,7 +91,7 @@ public class SetWebhook extends Request<SetWebhook, Response> {
      */
     public SetWebhook certificate(byte[] certificate) {
         this.isMultipart = true;
-        this.certificate = new InputFile(certificate, CERTIFICATE_STRING, MimeType.GENERAL_MIME_TYPE);
+        this.certificate = new InputFile(certificate, CERTIFICATE_STRING, MimeType.GENERAL.getTextVal());
         return addParameter(CERTIFICATE_STRING, this.certificate);
     }
 

@@ -3,8 +3,8 @@ package kz.pandev.legrambotapi.models.requests.common.send;
 import kz.pandev.legrambotapi.exceptions.WrongParameterTypeException;
 import kz.pandev.legrambotapi.models.requests.AbstractMultipartRequest;
 import kz.pandev.legrambotapi.models.types.common.message.MessageEntity;
-import kz.pandev.legrambotapi.utils.DefaultFileName;
-import kz.pandev.legrambotapi.utils.MimeType;
+import kz.pandev.legrambotapi.utils.enums.DefaultFileName;
+import kz.pandev.legrambotapi.utils.enums.MimeType;
 import kz.pandev.legrambotapi.utils.enums.ParseMode;
 import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
@@ -118,6 +118,7 @@ public class SendDocument extends AbstractMultipartRequest<SendDocument> {
      * @return this request
      * @throws WrongParameterTypeException when type of thumbnail not java.io.File or byte[]
      */
+    @Override
     public SendDocument thumbnail(@NotNull Object thumbnail) {
         if (thumbnail instanceof File || thumbnail instanceof byte[]) {
             return super.thumbnail(thumbnail);
@@ -135,19 +136,19 @@ public class SendDocument extends AbstractMultipartRequest<SendDocument> {
     }
 
     /**
-     * @return {@link DefaultFileName#DOC_FILE_NAME}
+     * @return {@link DefaultFileName#DOC} text value
      */
     @Override
     public String getDefaultFileName() {
-        return DefaultFileName.DOC_FILE_NAME;
+        return DefaultFileName.DOC.getTextVal();
     }
 
     /**
-     * @return {@link MimeType#DOC_MIME_TYPE}
+     * @return {@link MimeType#DOC} text value
      */
     @Override
     public String getDefaultContentType() {
-        return MimeType.DOC_MIME_TYPE;
+        return MimeType.DOC.getTextVal();
     }
 
     //endregion
