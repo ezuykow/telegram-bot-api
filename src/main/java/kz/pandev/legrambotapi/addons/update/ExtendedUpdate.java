@@ -3,6 +3,7 @@ package kz.pandev.legrambotapi.addons.update;
 import kz.pandev.legrambotapi.models.types.Update;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * Extends type {@link Update}. Adds fields {@link ExtendedUpdate#contentType}, {@link ExtendedUpdate#senderUserId},
@@ -25,6 +26,11 @@ public class ExtendedUpdate extends Update {
      * ID of the chat from which the update came
      */
     private long senderChatId;
+    /**
+     * ID of the chat thread from which the update came
+     */
+    @Nullable
+    private Integer senderChatThreadId;
 
     //region API
 
@@ -35,6 +41,7 @@ public class ExtendedUpdate extends Update {
         checkInitialisation();
         return contentType;
     }
+
     /**
      * @return {@link ExtendedUpdate#senderUserId}
      */
@@ -42,12 +49,21 @@ public class ExtendedUpdate extends Update {
         checkInitialisation();
         return senderUserId;
     }
+
     /**
      * @return {@link ExtendedUpdate#senderChatId}
      */
     public long getSenderChatId() {
         checkInitialisation();
         return senderChatId;
+    }
+
+    /**
+     * @return {@link ExtendedUpdate#senderChatThreadId}
+     */
+    public Integer getSenderChatThreadId() {
+        checkInitialisation();
+        return senderChatThreadId;
     }
 
     //endregion
@@ -57,6 +73,7 @@ public class ExtendedUpdate extends Update {
         this.contentType = UpdateUtils.resolveUpdateContentType(this);
         this.senderUserId = UpdateUtils.resolveSenderUserId(this);
         this.senderChatId = UpdateUtils.resolveSenderChatId(this);
+        this.senderChatThreadId = UpdateUtils.resolveSenderChatThreadId(this);
     }
 
     private void checkInitialisation() {
@@ -66,6 +83,4 @@ public class ExtendedUpdate extends Update {
     }
 
     //endregion
-
-
 }

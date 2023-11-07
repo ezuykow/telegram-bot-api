@@ -3,6 +3,7 @@ package kz.pandev.legrambotapi.addons.update;
 import kz.pandev.legrambotapi.models.types.Update;
 import kz.pandev.legrambotapi.models.types.common.message.Message;
 import kz.pandev.legrambotapi.models.types.common.poll.PollAnswer;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Useful methods for working with Update
@@ -19,7 +20,7 @@ public final class UpdateUtils {
      * @param update processed {@link Update}
      * @return Update's content type as {@link UpdateContentType}
      */
-    public static UpdateContentType resolveUpdateContentType(Update update) {
+    public static UpdateContentType resolveUpdateContentType(@NotNull Update update) {
         if (update.getMessage() != null) {
             return UpdateContentType.MESSAGE;
         }
@@ -73,11 +74,8 @@ public final class UpdateUtils {
      *      publishing a channel {@link UpdateContentType#CHANNEL_POST} or changing the channel publication
      *      {@link UpdateContentType#EDITED_CHANNEL_POST} (store fake User, i.e. fake userId)
      */
-    public static Long resolveSenderUserId(Update update) {
-        UpdateContentType contentType = (update instanceof ExtendedUpdate e)
-                ? e.getContentType()
-                : resolveUpdateContentType(update);
-        return resolveSenderUserIdByType(update, contentType);
+    public static Long resolveSenderUserId(@NotNull Update update) {
+        return resolveSenderUserIdByType(update, contentType(update));
     }
 
     /**
@@ -89,17 +87,30 @@ public final class UpdateUtils {
      *       pre-checkout request {@link UpdateContentType#PRE_CHECKOUT_QUERY}, new poll status
      *       {@link UpdateContentType#POLL}, changing the user's answer in the survey {@link UpdateContentType#POLL_ANSWER}
      */
-    public static Long resolveSenderChatId(Update update) {
-        UpdateContentType contentType = (update instanceof ExtendedUpdate e)
-                ? e.getContentType()
-                : resolveUpdateContentType(update);
-        return resolveSenderChatIdByType(update, contentType);
+    public static Long resolveSenderChatId(@NotNull Update update) {
+        return resolveSenderChatIdByType(update, contentType(update));
+    }
+
+    /**
+     * Determines the id of the chat thread from which the update came
+     * @param update processed {@link Update}
+     * @return id of the chat thread from which {@code update} came, or null, for updates, which
+     *      types is not {@link UpdateContentType#MESSAGE} or {@link UpdateContentType#CALLBACK_QUERY}
+     */
+    public static Integer resolveSenderChatThreadId(@NotNull Update update) {
+        return resolveSenderChatThreadIdByType(update, contentType(update));
     }
 
     //endregion
     //region Utils
 
-    @SuppressWarnings("DataFlowIssue") /*Impossible NullPointerException*/
+    private static UpdateContentType contentType(Update update) {
+        return (update instanceof ExtendedUpdate e)
+                ? e.getContentType()
+                : resolveUpdateContentType(update);
+    }
+
+    @SuppressWarnings("DataFlowIssue") /*NullPointerException if parameters are incorrect*/
     private static Long resolveSenderUserIdByType(Update update, UpdateContentType contentType) {
         Long userId = 0L;
         switch (contentType) {
@@ -126,7 +137,7 @@ public final class UpdateUtils {
         return userId;
     }
 
-    @SuppressWarnings("DataFlowIssue") /*Impossible NullPointerException*/
+    @SuppressWarnings("DataFlowIssue") /*NullPointerException if parameters are incorrect*/
     public static Long resolveSenderChatIdByType(Update update, UpdateContentType contentType) {
         Long chatId = 0L;
         switch (contentType) {
@@ -146,6 +157,25 @@ public final class UpdateUtils {
             default -> chatId = null;
         }
         return chatId;
+    }
+
+    @SuppressWarnings("DataFlowIssue") /*NullPointerException if parameters are incorrect*/
+    private static Integer resolveSenderChatThreadIdByType(Update update, UpdateContentType contentType) {
+        switch (contentType) {
+            case MESSAGE -> {
+                return update.getMessage().getMessageThreadId();
+            }
+            case CALLBACK_QUERY -> {
+                Message relatedMessage = update.getCallbackQuery().getMessage();
+                if (relatedMessage != null) {
+                    return relatedMessage.getMessageThreadId();
+                }
+                return null;
+            }
+            default -> {
+                return null;
+            }
+        }
     }
 
     //endregion
