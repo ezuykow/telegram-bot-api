@@ -21,11 +21,11 @@ public class ExtendedUpdate extends Update {
     /**
      * ID of the user from whom update came
      */
-    private long senderUserId;
+    private Long senderUserId;
     /**
      * ID of the chat from which the update came
      */
-    private long senderChatId;
+    private Long senderChatId;
     /**
      * ID of the chat thread from which the update came
      */

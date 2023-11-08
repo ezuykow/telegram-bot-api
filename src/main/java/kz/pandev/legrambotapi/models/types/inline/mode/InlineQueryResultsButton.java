@@ -6,6 +6,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.Serial;
@@ -17,7 +18,6 @@ import java.io.Serializable;
  * @author ezuykow
  */
 @Getter
-@Setter
 @EqualsAndHashCode
 @ToString
 public class InlineQueryResultsButton implements Serializable {
@@ -53,4 +53,32 @@ public class InlineQueryResultsButton implements Serializable {
     @SerializedName("start_parameter")
     @Nullable
     private String startParameter;
+
+    public InlineQueryResultsButton(String text) {
+        this.text = text;
+    }
+
+    //region API
+
+    /**
+     * Set parameter {@link InlineQueryResultsButton#webApp}
+     * @param webApp new parameter value
+     * @return this
+     */
+    public InlineQueryResultsButton webApp(@NotNull WebAppInfo webApp) {
+        this.webApp = webApp;
+        return this;
+    }
+
+    /**
+     * Set parameter {@link InlineQueryResultsButton#startParameter}
+     * @param startParameter new parameter value
+     * @return this
+     */
+    public InlineQueryResultsButton startParameter(@NotNull String startParameter) {
+        this.startParameter = startParameter;
+        return this;
+    }
+
+    //endregion
 }
