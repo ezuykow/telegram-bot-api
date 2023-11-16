@@ -2,7 +2,6 @@ package kz.pandev.legrambotapi.configure.api;
 
 import kz.pandev.legrambotapi.exceptions.BadFilePathException;
 import kz.pandev.legrambotapi.models.types.common.File;
-import kz.pandev.legrambotapi.utils.Constant;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -16,7 +15,6 @@ import java.nio.charset.StandardCharsets;
  * Methods to interact with files on Telegram bot API server
  * @author ezuykow
  */
-@SuppressWarnings("unused") /*Unused methods warning*/
 public class TelegramFileApi {
 
     /**
@@ -24,12 +22,8 @@ public class TelegramFileApi {
      */
     private final String botFileApiUrl;
 
-    public TelegramFileApi(String botToken) {
-        this(Constant.DEFAULT_BOT_API_SERVER_URL, botToken);
-    }
-
     public TelegramFileApi(String botApiUrl, String botToken) {
-        this.botFileApiUrl = botApiUrl + "file/bot" + botToken + "/";
+        this.botFileApiUrl = botApiUrl + "/file/bot" + botToken + "/";
     }
 
     //region API

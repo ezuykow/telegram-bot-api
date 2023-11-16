@@ -5,12 +5,14 @@ import kz.pandev.legrambotapi.models.types.Keyboard;
 import kz.pandev.legrambotapi.models.types.common.keyboard.button.KeyboardButton;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.Setter;
 import lombok.ToString;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -18,7 +20,6 @@ import java.util.List;
  * @author ezuykow
  */
 @Getter
-@Setter
 @EqualsAndHashCode
 @ToString
 public class ReplyKeyboardMarkup implements Keyboard, Serializable {
@@ -75,4 +76,107 @@ public class ReplyKeyboardMarkup implements Keyboard, Serializable {
     @SerializedName("selective")
     @Nullable
     private Boolean selective;
+
+    private ReplyKeyboardMarkup() {
+        this.keyboard = new ArrayList<>();
+    }
+
+    public ReplyKeyboardMarkup(@NotNull KeyboardButton... keyboard) {
+        this(Arrays.asList(keyboard));
+    }
+
+    public ReplyKeyboardMarkup(@NotNull List<KeyboardButton> keyboard) {
+        this();
+        for (KeyboardButton button : keyboard) {
+            addRow(button);
+        }
+    }
+
+    public ReplyKeyboardMarkup(@NotNull KeyboardButton[]... keyboard) {
+        this();
+        for (KeyboardButton[] row : keyboard) {
+            addRow(row);
+        }
+    }
+
+    @SafeVarargs
+    public ReplyKeyboardMarkup(@NotNull List<KeyboardButton>... keyboard) {
+        this();
+        for (List<KeyboardButton> row : keyboard) {
+            addRow(row);
+        }
+    }
+
+    //region API
+
+    /**
+     * Add row to keyboard
+     * @param rowButtons row to add
+     * @return this
+     */
+    public ReplyKeyboardMarkup addRow(KeyboardButton... rowButtons) {
+        return addRow(Arrays.asList(rowButtons));
+    }
+
+    /**
+     * Add row to keyboard
+     * @param rowButtons row to add
+     * @return this
+     */
+    public ReplyKeyboardMarkup addRow(List<KeyboardButton> rowButtons) {
+        this.keyboard.add(rowButtons);
+        return this;
+    }
+
+    /**
+     * Set parameter {@link ReplyKeyboardMarkup#isPersistent}
+     * @param isPersistent new parameter value
+     * @return this
+     */
+    public ReplyKeyboardMarkup isPersistent(boolean isPersistent) {
+        this.isPersistent = isPersistent;
+        return this;
+    }
+
+    /**
+     * Set parameter {@link ReplyKeyboardMarkup#resizeKeyboard}
+     * @param resizeKeyboard new parameter value
+     * @return this
+     */
+    public ReplyKeyboardMarkup resizeKeyboard(boolean resizeKeyboard) {
+        this.resizeKeyboard = resizeKeyboard;
+        return this;
+    }
+
+    /**
+     * Set parameter {@link ReplyKeyboardMarkup#oneTimeKeyboard}
+     * @param oneTimeKeyboard new parameter value
+     * @return this
+     */
+    public ReplyKeyboardMarkup oneTimeKeyboard(boolean oneTimeKeyboard) {
+        this.oneTimeKeyboard = oneTimeKeyboard;
+        return this;
+    }
+
+    /**
+     * Set parameter {@link ReplyKeyboardMarkup#inputFieldPlaceholder}
+     * @param inputFieldPlaceholder new parameter value
+     * @return this
+     */
+    public ReplyKeyboardMarkup inputFieldPlaceholder(@NotNull String inputFieldPlaceholder) {
+        this.inputFieldPlaceholder = inputFieldPlaceholder;
+        return this;
+    }
+
+    /**
+     * Set parameter {@link ReplyKeyboardMarkup#selective}
+     * @param selective new parameter value
+     * @return this
+     */
+    public ReplyKeyboardMarkup selective(boolean selective) {
+        this.selective = selective;
+        return this;
+    }
+
+    //endregion
 }

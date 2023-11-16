@@ -1,40 +1,32 @@
 package kz.pandev.legrambotapi.models.requests.common.send;
 
 import kz.pandev.legrambotapi.models.requests.AbstractSendRequest;
-import lombok.Getter;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Use this method to send an animated emoji that will display a random value. On success, the sent Message is returned.
  * @author ezuykow
  */
-@Getter
 public class SendDice extends AbstractSendRequest<SendDice> {
-
-    /**
-     * Optional. Emoji on which the dice throw animation is based.
-     * Currently, must be one of “🎲”, “🎯”, “🏀”, “⚽”, “🎳”, or “🎰”.
-     * Dice can have values 1-6 for “🎲”, “🎯” and “🎳”, values 1-5 for “🏀” and “⚽”,
-     * and values 1-64 for “🎰”. Defaults to “🎲”
-     */
-    @Nullable
-    private String emoji;
 
     /**
      * @param chatId Unique identifier for the target chat or username of the target channel (in the format @channelusername)
      */
-    public SendDice(Object chatId) {
+    public SendDice(@NotNull Object chatId) {
         super(chatId);
     }
 
     //region API
 
     /**
-     * Set parameter {@link SendDice#emoji}
-     * @param emoji new parameter value
+     * Set parameter emoji
+     * @param emoji Emoji on which the dice throw animation is based. Currently, must be one of
+     *             “🎲”, “🎯”, “🏀”, “⚽”, “🎳”, or “🎰”. Dice can have values 1-6 for
+     *             “🎲”, “🎯” and “🎳”, values 1-5 for “🏀” and “⚽”, and values 1-64
+     *             for “🎰”. Defaults to “🎲”
      * @return this request
      */
-    public SendDice emoji(String emoji) {
+    public SendDice emoji(@NotNull String emoji) {
         return addParameter("emoji", emoji);
     }
 

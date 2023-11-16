@@ -25,7 +25,7 @@ public class Response implements Serializable {
      * In case of an unsuccessful request, 'ok' equals false and the error is explained in the 'description'
      */
     @SerializedName("ok")
-    private Boolean ok;
+    private boolean ok;
 
     /**
      * Optional. A human-readable description of the result

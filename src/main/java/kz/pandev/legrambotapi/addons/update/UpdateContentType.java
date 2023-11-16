@@ -34,11 +34,11 @@ public enum UpdateContentType {
      */
     INLINE_QUERY,
     /**
-     * {@code Update} contains {@code ChosenInlineQuery} (The result of an inline query that was chosen by
+     * {@code Update} contains {@code ChosenInlineResult} (The result of an inline query that was chosen by
      * a user and sent to their chat partner. Please see our documentation on the feedback collecting for
      * details on how to enable these updates for your bot.)
      */
-    CHOSEN_INLINE_QUERY,
+    CHOSEN_INLINE_RESULT,
     /**
      * {@code Update} contains {@code ShippingQuery} (New incoming shipping query. Only for invoices
      * with flexible price)

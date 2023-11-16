@@ -1,12 +1,9 @@
 package kz.pandev.legrambotapi.models.requests.common.send;
 
-import kz.pandev.legrambotapi.exceptions.WrongParameterTypeException;
 import kz.pandev.legrambotapi.models.requests.AbstractMultipartRequest;
 import kz.pandev.legrambotapi.utils.enums.DefaultFileName;
 import kz.pandev.legrambotapi.utils.enums.MimeType;
-import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
 
@@ -15,21 +12,9 @@ import java.io.File;
  * Use this method to send video messages. On success, the sent Message is returned.
  * @author ezuykow
  */
-@Getter
 public class SendVideoNote extends AbstractMultipartRequest<SendVideoNote> {
 
     private static final String FILE_PARAM_NAME = "video_note";
-
-    /**
-     * Optional. Duration of sent video in seconds
-     */
-    @Nullable
-    private Integer duration;
-    /**
-     * Optional. Video width and height, i.e. diameter of the video message
-     */
-    @Nullable
-    private Integer length;
 
     /**
      * @param chatId Unique identifier for the target chat or username of the target channel (in the format @channelusername)
@@ -59,38 +44,21 @@ public class SendVideoNote extends AbstractMultipartRequest<SendVideoNote> {
     //region API
 
     /**
-     * Set parameter {@link SendVideoNote#duration}
-     * @param duration new parameter value
+     * Set parameter duration
+     * @param duration Duration of sent video in seconds
      * @return this request
      */
     public SendVideoNote duration(int duration) {
-        this.duration = duration;
         return addParameter("duration", duration);
     }
 
     /**
-     * Set parameter {@link SendVideoNote#length}
-     * @param length new parameter value
+     * Set parameter length
+     * @param length Video width and height, i.e. diameter of the video message
      * @return this request
      */
     public SendVideoNote length(int length) {
-        this.length = length;
         return addParameter("length", length);
-    }
-
-    /**
-     * Set parameter {@link AbstractMultipartRequest#thumbnail}
-     * @param thumbnail new parameter value as java.io.File or byte array
-     * @return this request
-     * @throws WrongParameterTypeException when type of thumbnail not java.io.File or byte[]
-     */
-    @Override
-    public SendVideoNote thumbnail(@NotNull Object thumbnail) {
-        if (thumbnail instanceof File || thumbnail instanceof byte[]) {
-            return super.thumbnail(thumbnail);
-        } else {
-            throw new WrongParameterTypeException("Type of parameter thumbnail should be java.io.File or byte[]");
-        }
     }
 
     /**

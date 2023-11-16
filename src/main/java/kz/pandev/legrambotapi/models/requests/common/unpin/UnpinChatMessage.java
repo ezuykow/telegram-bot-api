@@ -3,9 +3,7 @@ package kz.pandev.legrambotapi.models.requests.common.unpin;
 import kz.pandev.legrambotapi.exceptions.WrongParameterTypeException;
 import kz.pandev.legrambotapi.models.requests.Request;
 import kz.pandev.legrambotapi.models.responses.Response;
-import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 /**
  * Use this method to remove a message from the list of pinned messages in a chat.
@@ -14,15 +12,7 @@ import org.jetbrains.annotations.Nullable;
  * right in a channel. Returns True on success.
  * @author ezuykow
  */
-@Getter
 public class UnpinChatMessage extends Request<UnpinChatMessage, Response> {
-
-    /**
-     * Optional. Identifier of a message to unpin. If not specified, the most recent pinned
-     * message (by sending date) will be unpinned.
-     */
-    @Nullable
-    private Integer messageId;
 
     /**
      * @param chatId Unique identifier for the target chat or username of the target channel (in the format @channelusername)
@@ -39,12 +29,12 @@ public class UnpinChatMessage extends Request<UnpinChatMessage, Response> {
     //region API
 
     /**
-     * Set parameter {@link UnpinChatMessage#messageId}
-     * @param messageId new parameter value
+     * Set parameter message_id
+     * @param messageId Identifier of a message to unpin. If not specified, the most recent pinned message
+     *                 (by sending date) will be unpinned.
      * @return this request
      */
     public UnpinChatMessage messageId(int messageId) {
-        this.messageId = messageId;
         return addParameter("message_id", messageId);
     }
 

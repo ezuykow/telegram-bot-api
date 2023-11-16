@@ -107,7 +107,7 @@ public class Sticker implements Serializable {
      * <a href="https://telegram.org/blog/video-stickers-better-reactions/">video sticker</a>
      */
     @SerializedName("is_video")
-    private Integer isVideo;
+    private Boolean isVideo;
 
     /**
      * Optional. Sticker thumbnail in the .WEBP or .JPG format

@@ -32,7 +32,7 @@ public class SetStickerSetThumbnail  extends AbstractUploadRequest<AddStickerToS
      * @param name Sticker set name
      * @param userId User identifier of the sticker set owner
      */
-    public SetStickerSetThumbnail(String name, Long userId) {
+    public SetStickerSetThumbnail(@NotNull String name, long userId) {
         super(Response.class, "name", name);
         addParameter("user_id", userId);
     }

@@ -3,25 +3,16 @@ package kz.pandev.legrambotapi.models.requests.stickers;
 import kz.pandev.legrambotapi.models.requests.AbstractMultipartRequest;
 import kz.pandev.legrambotapi.utils.enums.DefaultFileName;
 import kz.pandev.legrambotapi.utils.enums.MimeType;
-import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 /**
  * Use this method to send static .WEBP, animated .TGS, or video .WEBM stickers.
  * On success, the sent Message is returned.
  * @author ezuykow
  */
-@Getter
 public class SendSticker extends AbstractMultipartRequest<SendSticker> {
 
     private static final String FILE_PARAM_NAME = "sticker";
-
-    /**
-     * Optional. Emoji associated with the sticker; only for just uploaded stickers
-     */
-    @Nullable
-    private String emoji;
 
     /**
      * @param chatId Unique identifier for the target chat or username of the target channel (in the format @channelusername)
@@ -37,12 +28,11 @@ public class SendSticker extends AbstractMultipartRequest<SendSticker> {
     //region API
 
     /**
-     * Set parameter {@link SendSticker#emoji}
-     * @param emoji new parameter value
+     * Set parameter emoji
+     * @param emoji Emoji associated with the sticker; only for just uploaded stickers
      * @return this request
      */
-    public SendSticker emoji(String emoji) {
-        this.emoji = emoji;
+    public SendSticker emoji(@NotNull String emoji) {
         return addParameter("emoji", emoji);
     }
 

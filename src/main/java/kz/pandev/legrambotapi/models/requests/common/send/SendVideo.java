@@ -1,14 +1,11 @@
 package kz.pandev.legrambotapi.models.requests.common.send;
 
-import kz.pandev.legrambotapi.exceptions.WrongParameterTypeException;
 import kz.pandev.legrambotapi.models.requests.AbstractMultipartRequest;
 import kz.pandev.legrambotapi.models.types.common.message.MessageEntity;
 import kz.pandev.legrambotapi.utils.enums.DefaultFileName;
 import kz.pandev.legrambotapi.utils.enums.MimeType;
 import kz.pandev.legrambotapi.utils.enums.ParseMode;
-import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
 import java.util.List;
@@ -19,52 +16,9 @@ import java.util.List;
  * this limit may be changed in the future.
  * @author ezuykow
  */
-@Getter
 public class SendVideo extends AbstractMultipartRequest<SendVideo> {
 
     private static final String FILE_PARAM_NAME = "video";
-
-    /**
-     * Optional. Video caption (may also be used when resending videos by file_id),
-     * 0-1024 characters after entities parsing
-     */
-    @Nullable
-    private String caption;
-    /**
-     * Optional. Mode for parsing entities in the video caption
-     */
-    @Nullable
-    private ParseMode parseMode;
-    /**
-     * Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
-     */
-    @Nullable
-    private List<MessageEntity> captionEntities;
-    /**
-     * Optional. Duration of sent video in seconds
-     */
-    @Nullable
-    private Integer duration;
-    /**
-     * Optional. Video width
-     */
-    @Nullable
-    private Integer width;
-    /**
-     * Optional. Video height
-     */
-    @Nullable
-    private Integer height;
-    /**
-     * Optional. Pass True if the uploaded video is suitable for streaming
-     */
-    @Nullable
-    private Boolean supportsStreaming;
-    /**
-     * Optional. Pass True if the video needs to be covered with a spoiler animation
-     */
-    @Nullable
-    private Boolean hasSpoiler;
 
     /**
      * @param chatId Unique identifier for the target chat or username of the target channel (in the format @channelusername)
@@ -94,98 +48,77 @@ public class SendVideo extends AbstractMultipartRequest<SendVideo> {
     //region API
 
     /**
-     * Set parameter {@link SendVideo#caption}
-     * @param caption new parameter value
+     * Set parameter caption
+     * @param caption Video caption (may also be used when resending videos by file_id), 0-1024 characters
+     *                after entities parsing
      * @return this request
      */
     public SendVideo caption(@NotNull String caption) {
-        this.caption = caption;
         return addParameter("caption", caption);
     }
 
     /**
-     * Set parameter {@link SendVideo#parseMode}
-     * @param parseMode new parameter value
+     * Set parameter parse_mode
+     * @param parseMode Mode for parsing entities in the video caption
+     * @see ParseMode
      * @return this request
      */
     public SendVideo parseMode(@NotNull ParseMode parseMode) {
-        this.parseMode = parseMode;
         return addParameter("parse_mode", parseMode.getTextVal());
     }
 
     /**
-     * Set parameter {@link SendVideo#captionEntities}
-     * @param entities new parameter value
+     * Set parameter caption_entities
+     * @param entities List of special entities that appear in the caption, which can be specified instead of parse_mode
      * @return this request
      */
     public SendVideo captionEntities(@NotNull List<MessageEntity> entities) {
-        this.captionEntities = entities;
         return addParameter("caption_entities", entities);
     }
 
     /**
-     * Set parameter {@link SendVideo#duration}
-     * @param duration new parameter value
+     * Set parameter duration
+     * @param duration Duration of sent video in seconds
      * @return this request
      */
     public SendVideo duration(int duration) {
-        this.duration = duration;
         return addParameter("duration", duration);
     }
 
     /**
-     * Set parameter {@link SendVideo#width}
-     * @param width new parameter value
+     * Set parameter width
+     * @param width Video width
      * @return this request
      */
     public SendVideo width(int width) {
-        this.width = width;
         return addParameter("width", width);
     }
 
     /**
-     * Set parameter {@link SendVideo#height}
-     * @param height new parameter value
+     * Set parameter height
+     * @param height Video height
      * @return this request
      */
     public SendVideo height(int height) {
-        this.height = height;
         return addParameter("height", height);
     }
 
     /**
-     * Set parameter {@link SendVideo#supportsStreaming}
-     * @param supportsStreaming new parameter value
+     * Set parameter supports_streaming
+     * @param supportsStreaming Pass True if the uploaded video is suitable for streaming
      * @return this request
      */
     public SendVideo supportsStreaming(boolean supportsStreaming) {
-        this.supportsStreaming = supportsStreaming;
         return addParameter("supports_streaming", supportsStreaming);
     }
 
     /**
-     * Set parameter {@link SendVideo#hasSpoiler}
-     * @param hasSpoiler new parameter value
+     * Set parameter has_spoiler
+     * @param hasSpoiler Pass True if the video needs to be covered with a spoiler animation
      * @return this request
      */
     public SendVideo hasSpoiler(boolean hasSpoiler) {
-        this.hasSpoiler = hasSpoiler;
         return addParameter("has_spoiler", hasSpoiler);
-    }
-
-    /**
-     * Set parameter {@link AbstractMultipartRequest#thumbnail}
-     * @param thumbnail new parameter value as java.io.File or byte array
-     * @return this request
-     * @throws WrongParameterTypeException when type of thumbnail not java.io.File or byte[]
-     */
-    @Override
-    public SendVideo thumbnail(@NotNull Object thumbnail) {
-        if (thumbnail instanceof File || thumbnail instanceof byte[]) {
-            return super.thumbnail(thumbnail);
-        } else {
-            throw new WrongParameterTypeException("Type of parameter thumbnail should be java.io.File or byte[]");
-        }
     }
 
     /**

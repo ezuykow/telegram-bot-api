@@ -94,7 +94,7 @@ public class UpdatesHandler {
         return new Callback<>() {
             @Override
             public void onResponse(GetUpdates request, GetUpdatesResponse response) {
-                boolean requestSuccessful = response.getOk() && response.getUpdates() != null
+                boolean requestSuccessful = response.isOk() && response.getUpdates() != null
                         && !response.getUpdates().isEmpty();
                 if (requestSuccessful) {
                     processSuccessfulResponse(request, response);
@@ -133,8 +133,7 @@ public class UpdatesHandler {
     }
 
     private void processUnsuccessfulResponse(GetUpdatesResponse response) {
-        boolean responseStatusNotOk = !response.getOk();
-        if (responseStatusNotOk) {
+        if (!response.isOk()) {
             String message = "GetUpdates failed with error code " + response.getErrorCode()
                     + " (" + response.getDescription() + ")";
             if (exceptionHandler != null) {

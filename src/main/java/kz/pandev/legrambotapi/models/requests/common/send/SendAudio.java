@@ -1,14 +1,11 @@
 package kz.pandev.legrambotapi.models.requests.common.send;
 
-import kz.pandev.legrambotapi.exceptions.WrongParameterTypeException;
 import kz.pandev.legrambotapi.models.requests.AbstractMultipartRequest;
 import kz.pandev.legrambotapi.models.types.common.message.MessageEntity;
 import kz.pandev.legrambotapi.utils.enums.DefaultFileName;
 import kz.pandev.legrambotapi.utils.enums.MimeType;
 import kz.pandev.legrambotapi.utils.enums.ParseMode;
-import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
 import java.util.List;
@@ -19,41 +16,9 @@ import java.util.List;
  * Bots can currently send audio files of up to 50 MB in size, this limit may be changed in the future.
  * @author ezuykow
  */
-@Getter
 public class SendAudio extends AbstractMultipartRequest<SendAudio> {
 
     private static final String FILE_PARAM_NAME = "audio";
-
-    /**
-     * Optional. Audio caption, 0-1024 characters after entities parsing
-     */
-    @Nullable
-    private String caption;
-    /**
-     * Optional. Mode for parsing entities in the audio caption.
-     */
-    @Nullable
-    private ParseMode parseMode;
-    /**
-     * Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
-     */
-    @Nullable
-    private List<MessageEntity> captionEntities;
-    /**
-     * Optional. Duration of the audio in seconds
-     */
-    @Nullable
-    private Integer duration;
-    /**
-     * Optional. Performer
-     */
-    @Nullable
-    private String performer;
-    /**
-     * Optional. Track name
-     */
-    @Nullable
-    private String title;
 
     /**
      * @param chatId Unique identifier for the target chat or username of the target channel (in the format @channelusername)
@@ -83,78 +48,58 @@ public class SendAudio extends AbstractMultipartRequest<SendAudio> {
     //region API
 
     /**
-     * Set parameter {@link SendAudio#caption}
-     * @param caption new parameter value
+     * Set parameter caption
+     * @param caption Audio caption, 0-1024 characters after entities parsing
      * @return this request
      */
     public SendAudio caption(@NotNull String caption) {
-        this.caption = caption;
         return addParameter("caption", caption);
     }
 
     /**
-     * Set parameter {@link SendAudio#parseMode}
-     * @param parseMode new parameter value
+     * Set parameter parse_mode
+     * @param parseMode Mode for parsing entities in the audio caption.
+     * @see ParseMode
      * @return this request
      */
     public SendAudio parseMode(@NotNull ParseMode parseMode) {
-        this.parseMode = parseMode;
         return addParameter("parse_mode", parseMode.getTextVal());
     }
 
     /**
-     * Set parameter {@link SendAudio#captionEntities}
-     * @param entities new parameter value
+     * Set parameter caption_entities
+     * @param entities List of special entities that appear in the caption, which can be specified instead of parse_mode
      * @return this request
      */
     public SendAudio captionEntities(@NotNull List<MessageEntity> entities) {
-        this.captionEntities = entities;
         return addParameter("caption_entities", entities);
     }
 
     /**
-     * Set parameter {@link SendAudio#duration}
-     * @param duration new parameter value
+     * Set parameter duration
+     * @param duration Duration of the audio in seconds
      * @return this request
      */
     public SendAudio duration(int duration) {
-        this.duration = duration;
         return addParameter("duration", duration);
     }
 
     /**
-     * Set parameter {@link SendAudio#performer}
-     * @param performer new parameter value
+     * Set parameter performer
+     * @param performer Performer
      * @return this request
      */
     public SendAudio performer(@NotNull String performer) {
-        this.performer = performer;
         return addParameter("performer", performer);
     }
 
     /**
-     * Set parameter {@link SendAudio#title}
-     * @param title new parameter value
+     * Set parameter title
+     * @param title Track name
      * @return this request
      */
     public SendAudio title(@NotNull String title) {
-        this.title = title;
         return addParameter("title", title);
-    }
-
-    /**
-     * Set parameter {@link AbstractMultipartRequest#thumbnail}
-     * @param thumbnail new parameter value as java.io.File or byte array
-     * @return this request
-     * @throws WrongParameterTypeException when type of thumbnail not java.io.File or byte[]
-     */
-    @Override
-    public SendAudio thumbnail(@NotNull Object thumbnail) {
-        if (thumbnail instanceof File || thumbnail instanceof byte[]) {
-            return super.thumbnail(thumbnail);
-        } else {
-            throw new WrongParameterTypeException("Type of parameter thumbnail should be java.io.File or byte[]");
-        }
     }
 
     /**

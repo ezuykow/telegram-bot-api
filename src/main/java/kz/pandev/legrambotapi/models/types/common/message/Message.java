@@ -139,8 +139,7 @@ public class Message implements Serializable {
      * Optional. True, if the message is sent to a forum topic
      */
     @SerializedName("is_topic_message")
-    @Nullable
-    private Boolean isTopicMessage;
+    private boolean isTopicMessage;
 
     /**
      * Optional. True, if the message is a channel post that was automatically forwarded to the connected discussion

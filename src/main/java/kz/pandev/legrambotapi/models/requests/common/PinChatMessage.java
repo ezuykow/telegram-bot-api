@@ -3,9 +3,7 @@ package kz.pandev.legrambotapi.models.requests.common;
 import kz.pandev.legrambotapi.exceptions.WrongParameterTypeException;
 import kz.pandev.legrambotapi.models.requests.Request;
 import kz.pandev.legrambotapi.models.responses.Response;
-import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 /**
  * Use this method to add a message to the list of pinned messages in a chat.
@@ -14,15 +12,7 @@ import org.jetbrains.annotations.Nullable;
  * administrator right in a channel. Returns True on success.
  * @author ezuykow
  */
-@Getter
 public class PinChatMessage extends Request<PinChatMessage, Response> {
-
-    /**
-     * Optional. Pass True if it is not necessary to send a notification to all chat members about the
-     * new pinned message. Notifications are always disabled in channels and private chats.
-     */
-    @Nullable
-    private Boolean disableNotification;
 
     /**
      * @param chatId Unique identifier for the target chat or username of the target channel (in the format @channelusername)
@@ -41,12 +31,13 @@ public class PinChatMessage extends Request<PinChatMessage, Response> {
     //region API
 
     /**
-     * Set parameter {@link PinChatMessage#disableNotification}
-     * @param disableNotification new parameter value
+     * Set parameter disable_notification
+     * @param disableNotification Pass True if it is not necessary to send a notification to all chat members about
+     *                           the new pinned message. Notifications are always disabled in channels and
+     *                           private chats.
      * @return this request
      */
     public PinChatMessage disableNotification(boolean disableNotification) {
-        this.disableNotification = disableNotification;
         return addParameter("disable_notification", disableNotification);
     }
 

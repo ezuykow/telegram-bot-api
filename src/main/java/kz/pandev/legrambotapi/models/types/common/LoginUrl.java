@@ -3,8 +3,8 @@ package kz.pandev.legrambotapi.models.types.common;
 import com.google.gson.annotations.SerializedName;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.Setter;
 import lombok.ToString;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.Serial;
@@ -18,7 +18,6 @@ import java.io.Serializable;
  * @author ezuykow
  */
 @Getter
-@Setter
 @EqualsAndHashCode
 @ToString
 public class LoginUrl implements Serializable {
@@ -37,7 +36,7 @@ public class LoginUrl implements Serializable {
      * <a href="https://core.telegram.org/widgets/login#checking-authorization">Checking authorization</a>.
      */
     @SerializedName("url")
-    private String url;
+    private final String url;
 
     /**
      * Optional. New text of the button in forwarded messages.
@@ -64,4 +63,45 @@ public class LoginUrl implements Serializable {
     @SerializedName("request_write_access")
     @Nullable
     private Boolean requestWriteAccess;
+
+    /**
+     * @param url {@link LoginUrl#url}
+     */
+    public LoginUrl(@NotNull String url) {
+        this.url = url;
+    }
+
+    //region API
+
+    /**
+     * Set parameter {@link LoginUrl#forwardText}
+     * @param forwardText new parameter value
+     * @return this
+     */
+    public LoginUrl forwardText(@NotNull String forwardText) {
+        this.forwardText = forwardText;
+        return this;
+    }
+
+    /**
+     * Set parameter {@link LoginUrl#botUsername}
+     * @param botUsername new parameter value
+     * @return this
+     */
+    public LoginUrl botUsername(@NotNull String botUsername) {
+        this.botUsername = botUsername;
+        return this;
+    }
+
+    /**
+     * Set parameter {@link LoginUrl#requestWriteAccess}
+     * @param requestWriteAccess new parameter value
+     * @return this
+     */
+    public LoginUrl requestWriteAccess(boolean requestWriteAccess) {
+        this.requestWriteAccess = requestWriteAccess;
+        return this;
+    }
+
+    //endregion
 }

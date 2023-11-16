@@ -2,6 +2,7 @@ package kz.pandev.legrambotapi.models.requests.payments;
 
 import kz.pandev.legrambotapi.models.requests.Request;
 import kz.pandev.legrambotapi.models.responses.Response;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Once the user has confirmed their payment and shipping details,
@@ -16,7 +17,7 @@ public class AnswerPreCheckoutQuery extends Request<AnswerPreCheckoutQuery, Resp
      * Use if everything is alright (goods are available, etc.) and the bot is ready to proceed with the order
      * @param preCheckoutQueryId Unique identifier for the query to be answered
      */
-    public AnswerPreCheckoutQuery(String preCheckoutQueryId) {
+    public AnswerPreCheckoutQuery(@NotNull String preCheckoutQueryId) {
         super(Response.class);
         addParameter("pre_checkout_query_id", preCheckoutQueryId);
         addParameter("ok", true);
@@ -30,7 +31,7 @@ public class AnswerPreCheckoutQuery extends Request<AnswerPreCheckoutQuery, Resp
      *                     T-shirts while you were busy filling out your payment details. Please choose a different
      *                     color or garment!"). Telegram will display this message to the user.
      */
-    public AnswerPreCheckoutQuery(String preCheckoutQueryId, String errorMessage) {
+    public AnswerPreCheckoutQuery(@NotNull String preCheckoutQueryId, @NotNull String errorMessage) {
         super(Response.class);
         addParameter("pre_checkout_query_id", preCheckoutQueryId);
         addParameter("ok", false);

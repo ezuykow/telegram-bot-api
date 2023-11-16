@@ -26,6 +26,16 @@ public class Chat implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
+     * Chat type
+     */
+    public enum Type {
+        @SerializedName("private") PRIVATE,
+        @SerializedName("group") GROUP,
+        @SerializedName("supergroup") SUPERGROUP,
+        @SerializedName("channel") CHANNEL
+    }
+
+    /**
      * Unique identifier for this chat
      */
     @SerializedName("id")
@@ -36,7 +46,7 @@ public class Chat implements Serializable {
      * Type of chat, can be either “private”, “group”, “supergroup” or “channel”
      */
     @SerializedName("type")
-    private String type;
+    private Type type;
 
     /**
      * Optional. Title, for supergroups, channels and group chats

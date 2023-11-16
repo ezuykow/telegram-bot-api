@@ -4,8 +4,8 @@ import com.google.gson.annotations.SerializedName;
 import kz.pandev.legrambotapi.models.types.Keyboard;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.Setter;
 import lombok.ToString;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.Serial;
@@ -18,7 +18,6 @@ import java.io.Serializable;
  * @author ezuykow
  */
 @Getter
-@Setter
 @EqualsAndHashCode
 @ToString
 public class ForceReply implements Keyboard, Serializable {
@@ -30,7 +29,7 @@ public class ForceReply implements Keyboard, Serializable {
      * Shows reply interface to the user, as if they manually selected the bot's message and tapped 'Reply'
      */
     @SerializedName("force_reply")
-    private Boolean isForceReply = true;
+    private static final boolean IS_FORCE_REPLY = true;
 
     /**
      *  Optional. The placeholder to be shown in the input field when the reply is active; 1-64 characters
@@ -47,4 +46,28 @@ public class ForceReply implements Keyboard, Serializable {
     @SerializedName("selective")
     @Nullable
     private Boolean selective;
+
+    //region API
+
+    /**
+     * Set parameter {@link ForceReply#inputFieldPlaceholder}
+     * @param inputFieldPlaceholder new parameter value
+     * @return this
+     */
+    public ForceReply inputFieldPlaceholder(@NotNull String inputFieldPlaceholder) {
+        this.inputFieldPlaceholder = inputFieldPlaceholder;
+        return this;
+    }
+
+    /**
+     * Set parameter {@link ForceReply#selective}
+     * @param selective new parameter value
+     * @return this
+     */
+    public ForceReply selective(boolean selective) {
+        this.selective = selective;
+        return this;
+    }
+
+    //endregion
 }

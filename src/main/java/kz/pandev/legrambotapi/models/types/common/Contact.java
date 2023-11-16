@@ -55,5 +55,5 @@ public class Contact implements Serializable {
      */
     @SerializedName("vcard")
     @Nullable
-    private String vcard;
+    private String vCard;
 }

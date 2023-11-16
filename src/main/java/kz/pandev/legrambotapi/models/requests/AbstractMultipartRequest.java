@@ -1,7 +1,7 @@
 package kz.pandev.legrambotapi.models.requests;
 
 import kz.pandev.legrambotapi.exceptions.WrongParameterTypeException;
-import lombok.Getter;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 
@@ -32,10 +32,9 @@ public abstract class AbstractMultipartRequest<T extends AbstractMultipartReques
      * “attach://&lt;file_attach_name&gt;” if the thumbnail was uploaded using multipart/form-data
      * under &lt;file_attach_name&gt;
      */
-    @Getter
     protected Object thumbnail;
 
-    protected AbstractMultipartRequest(Object chatId, Object file) {
+    protected AbstractMultipartRequest(@NotNull Object chatId, @NotNull Object file) {
         super(chatId);
         if (file instanceof String) {
             this.isMultipart = false;
@@ -81,10 +80,14 @@ public abstract class AbstractMultipartRequest<T extends AbstractMultipartReques
      * @param thumbnail new parameter value
      * @return this request
      */
-    protected T thumbnail(Object thumbnail) {
-        this.isMultipart = true;
-        this.thumbnail = thumbnail;
-        return addParameter("thumbnail", thumbnail);
+    public T thumbnail(@NotNull Object thumbnail) {
+        if (thumbnail instanceof File || thumbnail instanceof byte[]) {
+            this.isMultipart = true;
+            this.thumbnail = thumbnail;
+            return addParameter("thumbnail", thumbnail);
+        } else {
+            throw new WrongParameterTypeException("Type of parameter thumbnail should be java.io.File or byte[]");
+        }
     }
 
     /**

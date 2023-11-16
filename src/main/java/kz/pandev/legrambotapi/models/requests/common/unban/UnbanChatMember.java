@@ -3,9 +3,7 @@ package kz.pandev.legrambotapi.models.requests.common.unban;
 import kz.pandev.legrambotapi.exceptions.WrongParameterTypeException;
 import kz.pandev.legrambotapi.models.requests.Request;
 import kz.pandev.legrambotapi.models.responses.Response;
-import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 /**
  * Use this method to unban a previously banned user in a supergroup or channel.
@@ -16,14 +14,7 @@ import org.jetbrains.annotations.Nullable;
  * Returns True on success.
  * @author ezuykow
  */
-@Getter
 public class UnbanChatMember extends Request<UnbanChatMember, Response> {
-
-    /**
-     * Optional. Do nothing if the user is not banned
-     */
-    @Nullable
-    private Boolean onlyIfBanned;
 
     /**
      * @param chatId Unique identifier for the target group or username of the target supergroup or channel (in the format @channelusername)
@@ -42,12 +33,11 @@ public class UnbanChatMember extends Request<UnbanChatMember, Response> {
     //region API
 
     /**
-     * Set parameter {@link UnbanChatMember#onlyIfBanned}
-     * @param onlyIfBanned new parameter value
+     * Set parameter only_if_banned
+     * @param onlyIfBanned Do nothing if the user is not banned
      * @return this request
      */
     public UnbanChatMember onlyIfBanned(boolean onlyIfBanned) {
-        this.onlyIfBanned = onlyIfBanned;
         return addParameter("only_if_banned", onlyIfBanned);
     }
 

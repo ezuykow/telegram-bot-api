@@ -41,7 +41,7 @@ public class ChatInviteLink implements Serializable {
      * True, if users joining the chat via the link need to be approved by chat administrators
      */
     @SerializedName("creates_join_request")
-    private Boolean createsJoinRequest;
+    private boolean createsJoinRequest;
 
     /**
      * True, if the link is primary
@@ -82,5 +82,5 @@ public class ChatInviteLink implements Serializable {
      */
     @SerializedName("pending_join_request_count")
     @Nullable
-    private Integer pendingJoinRequestsCount;
+    private Integer pendingJoinRequestCount;
 }

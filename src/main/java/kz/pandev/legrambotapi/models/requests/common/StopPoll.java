@@ -4,22 +4,13 @@ import kz.pandev.legrambotapi.exceptions.WrongParameterTypeException;
 import kz.pandev.legrambotapi.models.requests.Request;
 import kz.pandev.legrambotapi.models.responses.common.PollResponse;
 import kz.pandev.legrambotapi.models.types.common.inline.keyboard.InlineKeyboardMarkup;
-import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 /**
  * Use this method to stop a poll which was sent by the bot. On success, the stopped Poll is returned.
  * @author ezuykow
  */
-@Getter
 public class StopPoll extends Request<StopPoll, PollResponse> {
-
-    /**
-     * Optional. A new message inline keyboard.
-     */
-    @Nullable
-    private InlineKeyboardMarkup replyMarkup;
 
     public StopPoll(@NotNull Object chatId, int messageId) {
         super(PollResponse.class);
@@ -34,12 +25,11 @@ public class StopPoll extends Request<StopPoll, PollResponse> {
     //region API
 
     /**
-     * Set parameter {@link StopPoll#replyMarkup}
-     * @param replyMarkup new parameter value
+     * Set parameter reply_markup
+     * @param replyMarkup A new message inline keyboard.
      * @return this request
      */
-    public StopPoll replyMarkup(InlineKeyboardMarkup replyMarkup) {
-        this.replyMarkup = replyMarkup;
+    public StopPoll replyMarkup(@NotNull InlineKeyboardMarkup replyMarkup) {
         return addParameter("reply_markup", replyMarkup);
     }
 

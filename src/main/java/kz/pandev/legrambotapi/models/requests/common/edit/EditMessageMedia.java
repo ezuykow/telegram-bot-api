@@ -6,9 +6,7 @@ import kz.pandev.legrambotapi.models.responses.Response;
 import kz.pandev.legrambotapi.models.responses.SendResponse;
 import kz.pandev.legrambotapi.models.types.common.inline.keyboard.InlineKeyboardMarkup;
 import kz.pandev.legrambotapi.models.types.common.input.media.InputMedia;
-import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.Map;
 
@@ -25,13 +23,6 @@ public class EditMessageMedia extends Request<EditMessageMedia, Response> {
 
     private boolean isMultipart;
     private InputMedia<?> media;
-
-    /**
-     * Optional. An inline keyboard.
-     */
-    @Getter
-    @Nullable
-    private InlineKeyboardMarkup replyMarkup;
 
     /**
      * @param chatId Unique identifier for the target chat or username
@@ -63,12 +54,11 @@ public class EditMessageMedia extends Request<EditMessageMedia, Response> {
     //region API
 
     /**
-     * Set parameter {@link EditMessageMedia#replyMarkup}
-     * @param replyMarkup new parameter value
+     * Set parameter reply_markup
+     * @param replyMarkup An inline keyboard.
      * @return this request
      */
     public EditMessageMedia replyMarkup(InlineKeyboardMarkup replyMarkup) {
-        this.replyMarkup = replyMarkup;
         return addParameter("reply_markup", replyMarkup);
     }
 

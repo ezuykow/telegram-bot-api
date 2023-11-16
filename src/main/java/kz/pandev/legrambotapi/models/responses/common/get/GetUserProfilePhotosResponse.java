@@ -2,7 +2,7 @@ package kz.pandev.legrambotapi.models.responses.common.get;
 
 import com.google.gson.annotations.SerializedName;
 import kz.pandev.legrambotapi.models.responses.Response;
-import kz.pandev.legrambotapi.models.types.common.user.UserProfilesPhotos;
+import kz.pandev.legrambotapi.models.types.common.user.UserProfilePhotos;
 import lombok.Getter;
 import lombok.ToString;
 
@@ -15,8 +15,8 @@ import lombok.ToString;
 public class GetUserProfilePhotosResponse extends Response {
 
     /**
-     * Result of request as {@link UserProfilesPhotos}
+     * Result of request as {@link UserProfilePhotos}
      */
     @SerializedName("result")
-    private UserProfilesPhotos photos;
+    private UserProfilePhotos photos;
 }

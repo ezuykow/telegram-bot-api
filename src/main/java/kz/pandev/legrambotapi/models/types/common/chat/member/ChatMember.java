@@ -15,12 +15,12 @@ import java.io.Serializable;
  * This object contains information about one member of a chat. <br>
  * Currently, the following 6 types of chat members are supported, distinguished by the
  * {@link ChatMember#status} field:
- * <li> {@link MemberStatus#creator}
- * <li> {@link MemberStatus#administrator}
- * <li> {@link MemberStatus#member}
- * <li> {@link MemberStatus#restricted}
- * <li> {@link MemberStatus#left}
- * <li> {@link MemberStatus#kicked}
+ * <li> {@link MemberStatus#CREATOR}
+ * <li> {@link MemberStatus#ADMINISTRATOR}
+ * <li> {@link MemberStatus#MEMBER}
+ * <li> {@link MemberStatus#RESTRICTED}
+ * <li> {@link MemberStatus#LEFT}
+ * <li> {@link MemberStatus#KICKED}
  * @author ezuykow
  */
 @Getter
@@ -35,32 +35,31 @@ public class ChatMember implements Serializable {
     /**
      * Possible statuses of member's in chat
      */
-    @SuppressWarnings("java:S115") /*Enum objects in lower case*/
     public enum MemberStatus{
         /**
          * Chat member that owns the chat and has all administrator privileges
          */
-        creator,
+        @SerializedName("creator") CREATOR,
         /**
          * Chat member that has some additional privileges
          */
-        administrator,
+        @SerializedName("administrator") ADMINISTRATOR,
         /**
          * Chat member that has no additional privileges or restrictions
          */
-        member,
+        @SerializedName("member") MEMBER,
         /**
          * Chat member that is under certain restrictions in the chat. Supergroups only
          */
-        restricted,
+        @SerializedName("restricted") RESTRICTED,
         /**
          * Chat member that isn't currently a member of the chat, but may join it themselves
          */
-        left,
+        @SerializedName("left") LEFT,
         /**
          * Chat member that was banned in the chat and can't return to the chat or view chat messages
          */
-        kicked
+        @SerializedName("kicked") KICKED
     }
 
     /**

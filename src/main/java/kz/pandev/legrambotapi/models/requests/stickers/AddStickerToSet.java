@@ -29,11 +29,11 @@ public class AddStickerToSet extends AbstractUploadRequest<AddStickerToSet, Resp
 
     //region Utils
 
-    private static String attachName(InputSticker sticker) {
+    private static String attachName(@NotNull InputSticker sticker) {
         return sticker.getAttachment() != null ? sticker.getAttachName() : "sticker_id";
     }
 
-    private static Object attachment(InputSticker sticker) {
+    private static Object attachment(@NotNull InputSticker sticker) {
         return sticker.getAttachment() != null ? sticker.getAttachment() : "sticker_id";
     }
 

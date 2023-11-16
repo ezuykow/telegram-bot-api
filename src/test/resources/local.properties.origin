@@ -1,0 +1,101 @@
+TEST_BOT_TOKEN=
+TEST_BOT_ID=
+
+TEST_ADMIN_IN_GROUP_ID=
+
+MY_USER_ID=
+PERSONAL_CHAT_ID=
+TEST_GROUP_ID=
+TEST_CHANNEL_NAME=
+TEST_CHANNEL_ID=
+
+TEST_WEBHOOK_URL=
+
+TEST_INLINE_QUERY=\
+  {\
+    "update_id":10000,\
+    "inline_query":{\
+        "id": 134567890097,\
+        "from":{\
+            "last_name":"Test Lastname",\
+            "type": "private",\
+            "is_bot": "false",\
+            "id":1111111,\
+            "first_name":"Test Firstname",\
+            "username":"Testusername",\
+            "language_code":"ru"\
+        },\
+        "query": "inline query",\
+        "offset": "offset"\
+    }\
+  }
+TEST_CHOSEN_INLINE_RESULT=\
+  {\
+    "update_id":10000,\
+    "chosen_inline_result":{\
+        "result_id": "12",\
+        "from":{\
+            "last_name":"Test Lastname",\
+            "is_bot": "false",\
+            "id":1111111,\
+            "first_name":"Test Firstname",\
+            "username":"Testusername",\
+            "language_code":"ru"\
+        },\
+        "query": "inline query",\
+        "inline_message_id": "1234csdbsk4839"\
+    }\
+  }
+TEST_CALLBACK_QUERY=\
+  {\
+    "update_id":10000,\
+    "callback_query":{\
+        "id": "4382bfdwdsb323b2d9",\
+        "from":{\
+            "last_name":"Test Lastname",\
+            "is_bot": "false",\
+            "id":1111111,\
+            "first_name":"Test Firstname",\
+            "username":"Testusername",\
+            "language_code":"ru"\
+        },\
+        "message":{\
+            "date":1441645532,\
+            "chat":{\
+                "last_name":"Test Lastname",\
+                "id":1111111,\
+                "type": "private",\
+                "first_name":"Test Firstname",\
+                "username":"Testusername"\
+            },\
+            "message_id":1365,\
+            "from":{\
+                "last_name":"Test Lastname",\
+                "id":1111111,\
+                "first_name":"Test Firstname",\
+                "username":"Testusername"\
+            },\
+            "text":"/start"\
+        },\
+        "data": "Data from button callback",\
+        "inline_message_id": "1234csdbsk4839",\
+        "chat_instance": "instance",\
+        "game_short_name": "game"\
+    }\
+  }
+TEST_POLL_ANSWER=\
+  {\
+    "update_id":10000,\
+    "poll_answer":{\
+        "poll_id":"1441645532",\
+        "user":{\
+            "id":1111111,\
+            "is_bot":false,\
+            "first_name":"dgfjhdgfhjd",\
+            "username":"sdfdfs",\
+            "language_code":"ru",\
+            "is_premium":true\
+        },\
+        "option_ids":[0]\
+    }\
+  }

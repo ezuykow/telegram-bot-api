@@ -7,9 +7,7 @@ import kz.pandev.legrambotapi.models.responses.SendResponse;
 import kz.pandev.legrambotapi.models.types.common.inline.keyboard.InlineKeyboardMarkup;
 import kz.pandev.legrambotapi.models.types.common.message.MessageEntity;
 import kz.pandev.legrambotapi.utils.enums.ParseMode;
-import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -18,29 +16,7 @@ import java.util.List;
  * is not an inline message, the edited Message is returned, otherwise True is returned.
  * @author ezuykow
  */
-@Getter
 public class EditMessageCaption extends Request<EditMessageCaption, Response> {
-
-    /**
-     * Optional. New caption of the message, 0-1024 characters after entities parsing
-     */
-    @Nullable
-    private String caption;
-    /**
-     * Optional. Mode for parsing entities in the message caption
-     */
-    @Nullable
-    private ParseMode parseMode;
-    /**
-     * Optional. List of special entities that appear in message text, which can be specified instead of parse_mode
-     */
-    @Nullable
-    private List<MessageEntity> captionEntities;
-    /**
-     * Optional. An inline keyboard.
-     */
-    @Nullable
-    private InlineKeyboardMarkup replyMarkup;
 
     /**
      * @param chatId Unique identifier for the target chat or username of the target channel (in the format @channelusername)
@@ -67,42 +43,38 @@ public class EditMessageCaption extends Request<EditMessageCaption, Response> {
     //region API
 
     /**
-     * Set parameter {@link EditMessageCaption#caption}
-     * @param caption new parameter value
+     * Set parameter caption
+     * @param caption New caption of the message, 0-1024 characters after entities parsing
      * @return this request
      */
-    public EditMessageCaption parseMode(@NotNull String caption) {
-        this.caption = caption;
+    public EditMessageCaption caption(@NotNull String caption) {
         return addParameter("caption", caption);
     }
 
     /**
-     * Set parameter {@link EditMessageCaption#parseMode}
-     * @param parseMode new parameter value
+     * Set parameter parse_mode
+     * @param parseMode Mode for parsing entities in the message caption
      * @return this request
      */
     public EditMessageCaption parseMode(@NotNull ParseMode parseMode) {
-        this.parseMode = parseMode;
         return addParameter("parse_mode", parseMode.getTextVal());
     }
 
     /**
-     * Set parameter {@link EditMessageCaption#captionEntities}
-     * @param entities new parameter value
+     * Set parameter entities
+     * @param entities List of special entities that appear in message text, which can be specified instead of parse_mode
      * @return this request
      */
     public EditMessageCaption entities(@NotNull List<MessageEntity> entities) {
-        this.captionEntities = entities;
         return addParameter("entities", entities);
     }
 
     /**
-     * Set parameter {@link EditMessageCaption#replyMarkup}
-     * @param replyMarkup new parameter value
+     * Set parameter reply_markup
+     * @param replyMarkup An inline keyboard
      * @return this request
      */
     public EditMessageCaption replyMarkup(@NotNull InlineKeyboardMarkup replyMarkup) {
-        this.replyMarkup = replyMarkup;
         return addParameter("reply_markup", replyMarkup);
     }
 

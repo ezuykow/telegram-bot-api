@@ -45,7 +45,7 @@ public class ExtendedUpdate extends Update {
     /**
      * @return {@link ExtendedUpdate#senderUserId}
      */
-    public long getSenderUserId() {
+    public Long getSenderUserId() {
         checkInitialisation();
         return senderUserId;
     }
@@ -53,7 +53,7 @@ public class ExtendedUpdate extends Update {
     /**
      * @return {@link ExtendedUpdate#senderChatId}
      */
-    public long getSenderChatId() {
+    public Long getSenderChatId() {
         checkInitialisation();
         return senderChatId;
     }

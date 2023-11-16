@@ -20,7 +20,6 @@ import java.util.concurrent.TimeUnit;
  * Telegram bot API server client
  * @author ezuykow
  */
-@SuppressWarnings("unused") /*Unused methods warning*/
 public class TelegramBotClient {
 
     /**
@@ -32,7 +31,7 @@ public class TelegramBotClient {
      */
     private final Gson gson;
     /**
-     * URL to telegram bot api server with prefix "/bot&lt;token&gt;/"
+     * URL to telegram bot api server with suffix "/bot&lt;token&gt;/"
      */
     private final String botUrl;
     /**

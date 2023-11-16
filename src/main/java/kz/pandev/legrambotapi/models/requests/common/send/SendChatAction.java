@@ -3,9 +3,7 @@ package kz.pandev.legrambotapi.models.requests.common.send;
 import kz.pandev.legrambotapi.models.requests.Request;
 import kz.pandev.legrambotapi.models.responses.Response;
 import kz.pandev.legrambotapi.utils.enums.ChatAction;
-import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 /**
  * Use this method when you need to tell the user that something is happening on the bot's side.
@@ -13,14 +11,7 @@ import org.jetbrains.annotations.Nullable;
  * clear its typing status). Returns True on success.
  * @author ezuykow
  */
-@Getter
 public class SendChatAction extends Request<SendChatAction, Response> {
-
-    /**
-     * Optional. Unique identifier for the target message thread; supergroups only
-     */
-    @Nullable
-    private Integer messageThreadId;
 
     /**
      * @param chatId Unique identifier for the target chat or username of the target channel (in the format @channelusername)
@@ -35,12 +26,11 @@ public class SendChatAction extends Request<SendChatAction, Response> {
     //region API
 
     /**
-     * Set parameter {@link SendChatAction#messageThreadId}
-     * @param messageThreadId new parameter value
+     * Set parameter message_thread_id
+     * @param messageThreadId Unique identifier for the target message thread; supergroups only
      * @return this request;
      */
     public SendChatAction messageThreadId(int messageThreadId) {
-        this.messageThreadId = messageThreadId;
         return addParameter("message_thread_id", messageThreadId);
     }
 

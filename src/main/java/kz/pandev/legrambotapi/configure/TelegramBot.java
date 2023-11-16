@@ -1,6 +1,7 @@
 package kz.pandev.legrambotapi.configure;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import kz.pandev.legrambotapi.configure.api.TelegramBotClient;
 import kz.pandev.legrambotapi.configure.api.TelegramFileApi;
 import kz.pandev.legrambotapi.exceptions.handler.ExceptionHandler;
@@ -12,6 +13,7 @@ import kz.pandev.legrambotapi.models.types.common.File;
 import kz.pandev.legrambotapi.configure.updates.handler.UpdatesHandler;
 import kz.pandev.legrambotapi.configure.updates.handler.UpdatesListener;
 import kz.pandev.legrambotapi.utils.Constant;
+import kz.pandev.legrambotapi.utils.gson.FileTypeAdapter;
 import lombok.Getter;
 import okhttp3.Call;
 import okhttp3.Interceptor;
@@ -26,6 +28,13 @@ import java.util.concurrent.TimeUnit;
  * @author ezuykow
  */
 public class TelegramBot {
+
+    /**
+     * Gson
+     */
+    private static final Gson gson = new GsonBuilder()
+            .registerTypeAdapter(java.io.File.class, new FileTypeAdapter())
+            .create();
 
     /**
      * URL to this bot API
@@ -153,6 +162,13 @@ public class TelegramBot {
         updatesHandler.stop();
     }
 
+    /**
+     * Shutdown bot
+     */
+    public void shutdown() {
+        telegramBotClient.shutdown();
+    }
+
     //endregion
 
     /**
@@ -197,9 +213,9 @@ public class TelegramBot {
         public Builder(String botToken, String apiServerUrl) {
             this.botToken = botToken;
             this.apiServerUrl = apiServerUrl;
-            this.botApiUrl = apiServerUrl + "bot" + botToken + "/";
+            this.botApiUrl = apiServerUrl + "/bot" + botToken + "/";
             this.okHttpClient = okHttpClient((Interceptor) null);
-            this.botClient = new TelegramBotClient(okHttpClient, new Gson(), botApiUrl);
+            this.botClient = new TelegramBotClient(okHttpClient, gson, botApiUrl);
             this.updatesHandler = new UpdatesHandler(Constant.DEFAULT_UPDATES_HANDLER_SLEEP_TIME_MILLISECONDS);
         }
 
@@ -282,8 +298,8 @@ public class TelegramBot {
             if (apiServerUrl == null) {
                 apiServerUrl = Constant.DEFAULT_BOT_API_SERVER_URL;
             }
-            botApiUrl = apiServerUrl + "bot" + botToken + "/";
-            botClient = new TelegramBotClient(okHttpClient, new Gson(), botApiUrl);
+            botApiUrl = apiServerUrl + "/bot" + botToken + "/";
+            botClient = new TelegramBotClient(okHttpClient, gson, botApiUrl);
 
             if (updatesHandler == null) {
                 updatesHandler = new UpdatesHandler(Constant.DEFAULT_UPDATES_HANDLER_SLEEP_TIME_MILLISECONDS);

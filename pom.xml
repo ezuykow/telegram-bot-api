@@ -10,7 +10,7 @@
     </parent>
     <groupId>kz.pandev</groupId>
     <artifactId>legram-bot-api</artifactId>
-    <version>0.2.2</version>
+    <version>0.3.0</version>
     <name>legram-bot-api</name>
     <description>legram-bot-api</description>
     <properties>
@@ -40,6 +40,11 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

@@ -4,9 +4,7 @@ import kz.pandev.legrambotapi.models.requests.Request;
 import kz.pandev.legrambotapi.models.responses.Response;
 import kz.pandev.legrambotapi.models.types.stickers.InputSticker;
 import kz.pandev.legrambotapi.models.types.stickers.Sticker;
-import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -15,22 +13,7 @@ import java.util.List;
  * set thus created. Returns True on success.
  * @author ezuykow
  */
-@Getter
 public class CreateNewStickerSet extends Request<CreateNewStickerSet, Response> {
-
-    /**
-     * Optional. Type of stickers in the set, pass “regular”, “mask”, or “custom_emoji”.
-     * By default, a regular sticker set is created.
-     */
-    @Nullable
-    private Sticker.Type stickerType;
-    /**
-     * Optional. Pass True if stickers in the sticker set must be repainted to the color of text
-     * when used in messages, the accent color if used as emoji status, white on chat photos, or
-     * another appropriate color based on context; for custom emoji sticker sets only
-     */
-    @Nullable
-    private Boolean needsRepainting;
 
     /**
      * @param userId User identifier of created sticker set owner
@@ -60,23 +43,29 @@ public class CreateNewStickerSet extends Request<CreateNewStickerSet, Response> 
 
     //region API
 
+    @Override
+    public boolean isMultipart() {
+        return true;
+    }
+
     /**
-     * Set parameter {@link CreateNewStickerSet#stickerType}
-     * @param stickerType new parameter value
+     * Set parameter sticker_type
+     * @param stickerType Type of stickers in the set, pass “regular”, “mask”, or “custom_emoji”. By default,
+     *                    a regular sticker set is created.
      * @return this request
      */
-    public CreateNewStickerSet stickerType(Sticker.Type stickerType) {
-        this.stickerType = stickerType;
+    public CreateNewStickerSet stickerType(@NotNull Sticker.Type stickerType) {
         return addParameter("sticker_type", stickerType.getTextVal());
     }
 
     /**
-     * Set parameter {@link CreateNewStickerSet#needsRepainting}
-     * @param needsRepainting new parameter value
+     * Set parameter needs_repainting
+     * @param needsRepainting Pass True if stickers in the sticker set must be repainted to the color of text when
+     *                       used in messages, the accent color if used as emoji status, white on chat photos,
+     *                        or another appropriate color based on context; for custom emoji sticker sets only
      * @return this request
      */
     public CreateNewStickerSet needsRepainting(boolean needsRepainting) {
-        this.needsRepainting = needsRepainting;
         return addParameter("needs_repainting", needsRepainting);
     }
 

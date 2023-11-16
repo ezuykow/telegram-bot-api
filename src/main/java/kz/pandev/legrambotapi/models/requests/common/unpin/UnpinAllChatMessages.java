@@ -3,6 +3,7 @@ package kz.pandev.legrambotapi.models.requests.common.unpin;
 import kz.pandev.legrambotapi.exceptions.WrongParameterTypeException;
 import kz.pandev.legrambotapi.models.requests.Request;
 import kz.pandev.legrambotapi.models.responses.Response;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Use this method to clear the list of pinned messages in a chat. If the chat is not a private chat,
@@ -16,7 +17,7 @@ public class UnpinAllChatMessages extends Request<UnpinAllChatMessages, Response
     /**
      * @param chatId Unique identifier for the target chat or username of the target channel (in the format @channelusername)
      */
-    public UnpinAllChatMessages(Object chatId) {
+    public UnpinAllChatMessages(@NotNull Object chatId) {
         super(Response.class);
         if (chatId instanceof Number || chatId instanceof String) {
             addParameter("chat_id", chatId);

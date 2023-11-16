@@ -5,9 +5,7 @@ import kz.pandev.legrambotapi.models.requests.Request;
 import kz.pandev.legrambotapi.models.responses.Response;
 import kz.pandev.legrambotapi.models.responses.SendResponse;
 import kz.pandev.legrambotapi.models.types.common.inline.keyboard.InlineKeyboardMarkup;
-import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 /**
  * Use this method to edit live location messages. A location can be edited until its live_period
@@ -15,30 +13,7 @@ import org.jetbrains.annotations.Nullable;
  * if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.
  * @author ezuykow
  */
-@Getter
 public class EditMessageLiveLocation extends Request<EditMessageLiveLocation, Response> {
-
-    /**
-     * Optional. The radius of uncertainty for the location, measured in meters; 0-1500
-     */
-    @Nullable
-    private Float horizontalAccuracy;
-    /**
-     * Optional. Direction in which the user is moving, in degrees. Must be between 1 and 360 if specified.
-     */
-    @Nullable
-    private Integer heading;
-    /**
-     * Optional. The maximum distance for proximity alerts about approaching another chat member, in meters.
-     * Must be between 1 and 100000 if specified.
-     */
-    @Nullable
-    private Integer proximityAlertRadius;
-    /**
-     * Optional. An inline keyboard.
-     */
-    @Nullable
-    private InlineKeyboardMarkup replyMarkup;
 
     /**
      * @param chatId Unique identifier for the target chat or username of the target channel (in the format @channelusername)
@@ -73,42 +48,39 @@ public class EditMessageLiveLocation extends Request<EditMessageLiveLocation, Re
     //region API
 
     /**
-     * Set parameter {@link EditMessageLiveLocation#horizontalAccuracy}
-     * @param horizontalAccuracy new parameter value
+     * Set parameter horizontal_accuracy
+     * @param horizontalAccuracy The radius of uncertainty for the location, measured in meters; 0-1500
      * @return this request
      */
     public EditMessageLiveLocation horizontalAccuracy(float horizontalAccuracy) {
-        this.horizontalAccuracy = horizontalAccuracy;
         return addParameter("horizontal_accuracy", horizontalAccuracy);
     }
 
     /**
-     * Set parameter {@link EditMessageLiveLocation#heading}
-     * @param heading new parameter value
+     * Set parameter heading
+     * @param heading Direction in which the user is moving, in degrees. Must be between 1 and 360 if specified.
      * @return this request
      */
     public EditMessageLiveLocation heading(int heading) {
-        this.heading = heading;
         return addParameter("heading", heading);
     }
 
     /**
-     * Set parameter {@link EditMessageLiveLocation#proximityAlertRadius}
-     * @param proximityAlertRadius new parameter value
+     * Set parameter proximity_alert_radius
+     * @param proximityAlertRadius The maximum distance for proximity alerts about approaching another chat member,
+     *                            in meters. Must be between 1 and 100000 if specified.
      * @return this request
      */
     public EditMessageLiveLocation proximityAlertRadius(int proximityAlertRadius) {
-        this.proximityAlertRadius = proximityAlertRadius;
         return addParameter("proximity_alert_radius", proximityAlertRadius);
     }
 
     /**
-     * Set parameter {@link EditMessageLiveLocation#replyMarkup}
-     * @param replyMarkup new parameter value
+     * Set parameter reply_markup
+     * @param replyMarkup An inline keyboard.
      * @return this request
      */
-    public EditMessageLiveLocation replyMarkup(InlineKeyboardMarkup replyMarkup) {
-        this.replyMarkup = replyMarkup;
+    public EditMessageLiveLocation replyMarkup(@NotNull InlineKeyboardMarkup replyMarkup) {
         return addParameter("reply_markup", replyMarkup);
     }
 

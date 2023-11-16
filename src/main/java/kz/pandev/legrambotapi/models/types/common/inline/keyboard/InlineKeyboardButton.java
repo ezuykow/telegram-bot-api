@@ -1,14 +1,14 @@
 package kz.pandev.legrambotapi.models.types.common.inline.keyboard;
 
 import com.google.gson.annotations.SerializedName;
-import kz.pandev.legrambotapi.models.types.games.CallbackGame;
 import kz.pandev.legrambotapi.models.types.common.LoginUrl;
 import kz.pandev.legrambotapi.models.types.common.SwitchInlineQueryChosenChat;
 import kz.pandev.legrambotapi.models.types.common.web.app.WebAppInfo;
+import kz.pandev.legrambotapi.models.types.games.CallbackGame;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.Setter;
 import lombok.ToString;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.Serial;
@@ -19,7 +19,6 @@ import java.io.Serializable;
  * @author ezuykow
  */
 @Getter
-@Setter
 @EqualsAndHashCode
 @ToString
 public class InlineKeyboardButton implements Serializable {
@@ -112,4 +111,111 @@ public class InlineKeyboardButton implements Serializable {
     @SerializedName("pay")
     @Nullable
     private Boolean pay;
+
+    public InlineKeyboardButton(@NotNull String text) {
+        this.text = text;
+        this.callbackData = text;
+    }
+
+    //region API
+
+    /**
+     * Set parameter {@link InlineKeyboardButton#url}
+     * @param url new parameter value
+     * @return this
+     */
+    public InlineKeyboardButton url(@NotNull String url) {
+        this.callbackData = null;
+        this.url = url;
+        return this;
+    }
+
+    /**
+     * Set parameter {@link InlineKeyboardButton#callbackData}
+     * @param callbackData new parameter value
+     * @return this
+     */
+    public InlineKeyboardButton callbackData(@NotNull String callbackData) {
+        this.callbackData = callbackData;
+        return this;
+    }
+
+    /**
+     * Set parameter {@link InlineKeyboardButton#webApp}
+     * @param webApp new parameter value
+     * @return this
+     */
+    public InlineKeyboardButton webApp(@NotNull WebAppInfo webApp) {
+        this.callbackData = null;
+        this.webApp = webApp;
+        return this;
+    }
+
+    /**
+     * Set parameter {@link InlineKeyboardButton#loginUrl}
+     * @param loginUrl new parameter value
+     * @return this
+     */
+    public InlineKeyboardButton loginUrl(@NotNull LoginUrl loginUrl) {
+        this.callbackData = null;
+        this.loginUrl = loginUrl;
+        return this;
+    }
+
+    /**
+     * Set parameter {@link InlineKeyboardButton#switchInlineQuery}
+     * @param switchInlineQuery new parameter value
+     * @return this
+     */
+    public InlineKeyboardButton switchInlineQuery(@NotNull String switchInlineQuery) {
+        this.callbackData = null;
+        this.switchInlineQuery = switchInlineQuery;
+        return this;
+    }
+
+    /**
+     * Set parameter {@link InlineKeyboardButton#switchInlineQueryCurrentChat}
+     * @param switchInlineQueryCurrentChat new parameter value
+     * @return this
+     */
+    public InlineKeyboardButton switchInlineQueryCurrentChat(@NotNull String switchInlineQueryCurrentChat) {
+        this.callbackData = null;
+        this.switchInlineQueryCurrentChat = switchInlineQueryCurrentChat;
+        return this;
+    }
+
+    /**
+     * Set parameter {@link InlineKeyboardButton#switchInlineQueryChosenChat}
+     * @param switchInlineQueryChosenChat new parameter value
+     * @return this
+     */
+    public InlineKeyboardButton switchInlineQueryChosenChat(@NotNull SwitchInlineQueryChosenChat switchInlineQueryChosenChat) {
+        this.callbackData = null;
+        this.switchInlineQueryChosenChat = switchInlineQueryChosenChat;
+        return this;
+    }
+
+    /**
+     * Set parameter {@link InlineKeyboardButton#callbackGame}
+     * @param callbackGame new parameter value
+     * @return this
+     */
+    public InlineKeyboardButton callbackGame(@NotNull CallbackGame callbackGame) {
+        this.callbackData = null;
+        this.callbackGame = callbackGame;
+        return this;
+    }
+
+    /**
+     * Set parameter {@link InlineKeyboardButton#pay}
+     * @param pay new parameter value
+     * @return this
+     */
+    public InlineKeyboardButton pay(boolean pay) {
+        this.callbackData = null;
+        this.pay = pay;
+        return this;
+    }
+
+    //endregion
 }

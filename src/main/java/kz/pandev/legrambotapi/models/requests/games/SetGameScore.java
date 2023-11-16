@@ -2,9 +2,8 @@ package kz.pandev.legrambotapi.models.requests.games;
 
 import kz.pandev.legrambotapi.models.requests.Request;
 import kz.pandev.legrambotapi.models.responses.Response;
-import lombok.Getter;
+import kz.pandev.legrambotapi.models.responses.SendResponse;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 /**
  * Use this method to set the score of the specified user in a game message. On success,
@@ -13,20 +12,7 @@ import org.jetbrains.annotations.Nullable;
  * score in the chat and force is False.
  * @author ezuykow
  */
-@Getter
 public class SetGameScore extends Request<SetGameScore, Response> {
-
-    /**
-     * Optional. Pass True if the high score is allowed to decrease. This can be useful when fixing
-     * mistakes or banning cheaters
-     */
-    @Nullable
-    private Boolean force;
-    /**
-     * Optional. Pass True if the game message should not be automatically edited to include the current scoreboard
-     */
-    @Nullable
-    private Boolean disableEditMessage;
 
     /**
      * Use if the message is not an inline message
@@ -36,7 +22,7 @@ public class SetGameScore extends Request<SetGameScore, Response> {
      * @param messageId Identifier of the sent message
      */
     public SetGameScore(long userId, int score, long chatId, int messageId) {
-        super(Response.class);
+        super(SendResponse.class);
         addParameter("user_id", userId);
         addParameter("score", score);
         addParameter("chat_id", chatId);
@@ -59,22 +45,22 @@ public class SetGameScore extends Request<SetGameScore, Response> {
     //region API
 
     /**
-     * Set parameter {@link SetGameScore#force}
-     * @param force new parameter value
+     * Set parameter force
+     * @param force Pass True if the high score is allowed to decrease. This can be useful when fixing
+     *             mistakes or banning cheaters
      * @return this request
      */
     public SetGameScore force(boolean force) {
-        this.force = force;
         return addParameter("force", force);
     }
 
     /**
-     * Set parameter {@link SetGameScore#disableEditMessage}
-     * @param disableEditMessage new parameter value
+     * Set parameter disable_edit_message
+     * @param disableEditMessage Pass True if the game message should not be automatically edited to include
+     *                          the current scoreboard
      * @return this request
      */
     public SetGameScore disableEditMessage(boolean disableEditMessage) {
-        this.disableEditMessage = disableEditMessage;
         return addParameter("disable_edit_message", disableEditMessage);
     }
 

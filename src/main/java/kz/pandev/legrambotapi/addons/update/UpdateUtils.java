@@ -40,7 +40,7 @@ public final class UpdateUtils {
             return UpdateContentType.INLINE_QUERY;
         }
         if (update.getChosenInlineResult() != null) {
-            return UpdateContentType.CHOSEN_INLINE_QUERY;
+            return UpdateContentType.CHOSEN_INLINE_RESULT;
         }
         if (update.getShippingQuery() != null) {
             return UpdateContentType.SHIPPING_QUERY;
@@ -83,7 +83,7 @@ public final class UpdateUtils {
      * @param update processed {@link Update}
      * @return id of the chat from which {@code update} came, or null, for updates in which arrived
      *       inline request {@link UpdateContentType#INLINE_QUERY}, result of inline request
-     *       {@link UpdateContentType#CHOSEN_INLINE_QUERY}, shipping request {@link UpdateContentType#SHIPPING_QUERY},
+     *       {@link UpdateContentType#CHOSEN_INLINE_RESULT}, shipping request {@link UpdateContentType#SHIPPING_QUERY},
      *       pre-checkout request {@link UpdateContentType#PRE_CHECKOUT_QUERY}, new poll status
      *       {@link UpdateContentType#POLL}, changing the user's answer in the survey {@link UpdateContentType#POLL_ANSWER}
      */
@@ -118,7 +118,7 @@ public final class UpdateUtils {
             case CALLBACK_QUERY -> userId = update.getCallbackQuery().getFrom().getId();
             case EDITED_MESSAGE -> userId = update.getEditedMessage().getFrom().getId();
             case INLINE_QUERY -> userId = update.getInlineQuery().getFrom().getId();
-            case CHOSEN_INLINE_QUERY -> userId = update.getChosenInlineResult().getFrom().getId();
+            case CHOSEN_INLINE_RESULT -> userId = update.getChosenInlineResult().getFrom().getId();
             case SHIPPING_QUERY -> userId = update.getShippingQuery().getFrom().getId();
             case PRE_CHECKOUT_QUERY -> userId = update.getPreCheckoutQuery().getFrom().getId();
             case MY_CHAT_MEMBER -> userId = update.getMyChatMember().getFrom().getId();

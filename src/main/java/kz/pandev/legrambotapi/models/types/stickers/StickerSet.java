@@ -53,7 +53,7 @@ public class StickerSet  implements Serializable {
      * <a href="https://telegram.org/blog/video-stickers-better-reactions/">video sticker</a>
      */
     @SerializedName("is_video")
-    private Integer isVideo;
+    private Boolean isVideo;
 
     /**
      * List of all set stickers

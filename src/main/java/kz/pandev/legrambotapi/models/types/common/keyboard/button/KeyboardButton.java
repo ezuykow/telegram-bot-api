@@ -4,8 +4,8 @@ import com.google.gson.annotations.SerializedName;
 import kz.pandev.legrambotapi.models.types.common.web.app.WebAppInfo;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.Setter;
 import lombok.ToString;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.Serial;
@@ -18,7 +18,6 @@ import java.io.Serializable;
  * @author ezuykow
  */
 @Getter
-@Setter
 @EqualsAndHashCode
 @ToString
 public class KeyboardButton implements Serializable {
@@ -80,4 +79,72 @@ public class KeyboardButton implements Serializable {
     @SerializedName("web_app")
     @Nullable
     private WebAppInfo webApp;
+
+    public KeyboardButton(@NotNull String text) {
+        this.text = text;
+    }
+
+    //region API
+
+    /**
+     * Set parameter {@link KeyboardButton#requestUser}
+     * @param requestUser new parameter value
+     * @return this
+     */
+    public KeyboardButton requestUser(@NotNull KeyboardButtonRequestUser requestUser) {
+        this.requestUser = requestUser;
+        return this;
+    }
+
+    /**
+     * Set parameter {@link KeyboardButton#requestChat}
+     * @param requestChat new parameter value
+     * @return this
+     */
+    public KeyboardButton requestChat(@NotNull KeyboardButtonRequestChat requestChat) {
+        this.requestChat = requestChat;
+        return this;
+    }
+
+    /**
+     * Set parameter {@link KeyboardButton#requestContact}
+     * @param requestContact new parameter value
+     * @return this
+     */
+    public KeyboardButton requestContact(boolean requestContact) {
+        this.requestContact = requestContact;
+        return this;
+    }
+
+    /**
+     * Set parameter {@link KeyboardButton#requestLocation}
+     * @param requestLocation new parameter value
+     * @return this
+     */
+    public KeyboardButton requestLocation(boolean requestLocation) {
+        this.requestLocation = requestLocation;
+        return this;
+    }
+
+    /**
+     * Set parameter {@link KeyboardButton#requestPoll}
+     * @param requestPoll new parameter value
+     * @return this
+     */
+    public KeyboardButton requestPoll(@NotNull KeyboardButtonPollType requestPoll) {
+        this.requestPoll = requestPoll;
+        return this;
+    }
+
+    /**
+     * Set parameter {@link KeyboardButton#webApp}
+     * @param webApp new parameter value
+     * @return this
+     */
+    public KeyboardButton webApp(@NotNull WebAppInfo webApp) {
+        this.webApp = webApp;
+        return this;
+    }
+
+    //endregion
 }

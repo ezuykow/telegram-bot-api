@@ -3,7 +3,6 @@ package kz.pandev.legrambotapi.models.types.common.chat;
 import com.google.gson.annotations.SerializedName;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.Setter;
 import lombok.ToString;
 import org.jetbrains.annotations.Nullable;
 
@@ -15,7 +14,6 @@ import java.io.Serializable;
  * @author ezuykow
  */
 @Getter
-@Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString
 public class ChatPermissions implements Serializable {
@@ -28,7 +26,7 @@ public class ChatPermissions implements Serializable {
      */
     @SerializedName("can_send_messages")
     @Nullable
-    private Boolean canSendMessage;
+    private Boolean canSendMessages;
 
     /**
      * Optional. True, if the user is allowed to send audios
@@ -122,4 +120,148 @@ public class ChatPermissions implements Serializable {
     @SerializedName("can_manage_topics")
     @Nullable
     private Boolean canManageTopics;
+
+    //region API
+
+    /**
+     * Set parameter {@link ChatPermissions#canSendMessages}
+     * @param canSendMessages new parameter value
+     * @return this
+     */
+    public ChatPermissions canSendMessages(boolean canSendMessages) {
+        this.canSendMessages = canSendMessages;
+        return this;
+    }
+
+    /**
+     * Set parameter {@link ChatPermissions#canSendAudios}
+     * @param canSendAudios new parameter value
+     * @return this
+     */
+    public ChatPermissions canSendAudios(boolean canSendAudios) {
+        this.canSendAudios = canSendAudios;
+        return this;
+    }
+
+    /**
+     * Set parameter {@link ChatPermissions#canSendDocuments}
+     * @param canSendDocuments new parameter value
+     * @return this
+     */
+    public ChatPermissions canSendDocuments(boolean canSendDocuments) {
+        this.canSendDocuments = canSendDocuments;
+        return this;
+    }
+
+    /**
+     * Set parameter {@link ChatPermissions#canSendPhotos}
+     * @param canSendPhotos new parameter value
+     * @return this
+     */
+    public ChatPermissions canSendPhotos(boolean canSendPhotos) {
+        this.canSendPhotos = canSendPhotos;
+        return this;
+    }
+
+    /**
+     * Set parameter {@link ChatPermissions#canSendVideos}
+     * @param canSendVideos new parameter value
+     * @return this
+     */
+    public ChatPermissions canSendVideos(boolean canSendVideos) {
+        this.canSendVideos = canSendVideos;
+        return this;
+    }
+
+    /**
+     * Set parameter {@link ChatPermissions#canSendVideoNotes}
+     * @param canSendVideoNotes new parameter value
+     * @return this
+     */
+    public ChatPermissions canSendVideoNotes(boolean canSendVideoNotes) {
+        this.canSendVideoNotes = canSendVideoNotes;
+        return this;
+    }
+
+    /**
+     * Set parameter {@link ChatPermissions#canSendVoiceNotes}
+     * @param canSendVoiceNotes new parameter value
+     * @return this
+     */
+    public ChatPermissions canSendVoiceNotes(boolean canSendVoiceNotes) {
+        this.canSendVoiceNotes = canSendVoiceNotes;
+        return this;
+    }
+
+    /**
+     * Set parameter {@link ChatPermissions#canSendPolls}
+     * @param canSendPolls new parameter value
+     * @return this
+     */
+    public ChatPermissions canSendPolls(boolean canSendPolls) {
+        this.canSendPolls = canSendPolls;
+        return this;
+    }
+
+    /**
+     * Set parameter {@link ChatPermissions#canSendOtherMessages}
+     * @param canSendOtherMessages new parameter value
+     * @return this
+     */
+    public ChatPermissions canSendOtherMessages(boolean canSendOtherMessages) {
+        this.canSendOtherMessages = canSendOtherMessages;
+        return this;
+    }
+
+    /**
+     * Set parameter {@link ChatPermissions#canAddWebPagePreviews}
+     * @param canAddWebPagePreviews new parameter value
+     * @return this
+     */
+    public ChatPermissions canAddWebPagePreviews(boolean canAddWebPagePreviews) {
+        this.canAddWebPagePreviews = canAddWebPagePreviews;
+        return this;
+    }
+
+    /**
+     * Set parameter {@link ChatPermissions#canChangeInfo}
+     * @param canChangeInfo new parameter value
+     * @return this
+     */
+    public ChatPermissions canChangeInfo(boolean canChangeInfo) {
+        this.canChangeInfo = canChangeInfo;
+        return this;
+    }
+
+    /**
+     * Set parameter {@link ChatPermissions#canInviteUsers}
+     * @param canInviteUsers new parameter value
+     * @return this
+     */
+    public ChatPermissions canInviteUsers(boolean canInviteUsers) {
+        this.canInviteUsers = canInviteUsers;
+        return this;
+    }
+
+    /**
+     * Set parameter {@link ChatPermissions#canPinMessages}
+     * @param canPinMessages new parameter value
+     * @return this
+     */
+    public ChatPermissions canPinMessages(boolean canPinMessages) {
+        this.canPinMessages = canPinMessages;
+        return this;
+    }
+
+    /**
+     * Set parameter {@link ChatPermissions#canManageTopics}
+     * @param canManageTopics new parameter value
+     * @return this
+     */
+    public ChatPermissions canManageTopics(boolean canManageTopics) {
+        this.canManageTopics = canManageTopics;
+        return this;
+    }
+
+    //endregion
 }

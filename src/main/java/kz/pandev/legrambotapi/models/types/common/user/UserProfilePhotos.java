@@ -19,7 +19,7 @@ import java.util.List;
 @Setter
 @EqualsAndHashCode
 @ToString
-public class UserProfilesPhotos implements Serializable {
+public class UserProfilePhotos implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
