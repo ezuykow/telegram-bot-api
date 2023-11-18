@@ -77,7 +77,7 @@ public class ReplyKeyboardMarkup implements Keyboard, Serializable {
     @Nullable
     private Boolean selective;
 
-    private ReplyKeyboardMarkup() {
+    public ReplyKeyboardMarkup() {
         this.keyboard = new ArrayList<>();
     }
 
