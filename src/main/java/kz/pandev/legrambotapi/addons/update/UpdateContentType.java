@@ -74,6 +74,10 @@ public enum UpdateContentType {
      * {@code Update} contains {@code ChatMemberUpdated} (A request to join the chat has been sent. The bot must
      * have the can_invite_users administrator right in the chat to receive these updates.)
      */
-    CHAT_JOIN_REQUEST
+    CHAT_JOIN_REQUEST,
+    /**
+     * Used for mark ExtendedUpdate's content type as unresolved
+     */
+    UNRESOLVED
 
 }
