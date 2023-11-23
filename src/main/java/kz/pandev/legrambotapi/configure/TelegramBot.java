@@ -217,6 +217,7 @@ public class TelegramBot {
             this.okHttpClient = okHttpClient((Interceptor) null);
             this.botClient = new TelegramBotClient(okHttpClient, gson, botApiUrl);
             this.updatesHandler = new UpdatesHandler(Constant.DEFAULT_UPDATES_HANDLER_SLEEP_TIME_MILLISECONDS);
+            this.fileApi = new TelegramFileApi(apiServerUrl, botToken);
         }
 
         //region API
