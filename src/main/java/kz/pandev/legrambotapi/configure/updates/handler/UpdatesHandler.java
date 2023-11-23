@@ -1,5 +1,6 @@
 package kz.pandev.legrambotapi.configure.updates.handler;
 
+import kz.pandev.legrambotapi.addons.update.ExtendedUpdate;
 import kz.pandev.legrambotapi.configure.TelegramBot;
 import kz.pandev.legrambotapi.exceptions.UnsuccessfulGetUpdatesRequestException;
 import kz.pandev.legrambotapi.exceptions.handler.ExceptionHandler;
@@ -121,7 +122,7 @@ public class UpdatesHandler {
     }
 
     private void processSuccessfulResponse(GetUpdates request, GetUpdatesResponse response) {
-        List<Update> updates = response.getUpdates();
+        List<ExtendedUpdate> updates = response.getUpdates();
         int lastConfirmedUpdate = updatesListener.process(updates);
 
         if (lastConfirmedUpdate != UpdatesListener.CONFIRMED_UPDATES_NONE) {
