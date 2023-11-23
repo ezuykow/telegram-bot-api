@@ -1,5 +1,6 @@
 package kz.pandev.legrambotapi.additional.test.classes;
 
+import kz.pandev.legrambotapi.addons.update.ExtendedUpdate;
 import kz.pandev.legrambotapi.models.types.Update;
 
 import java.util.List;
@@ -12,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  */
 public class UpdateTest {
 
-    public static void check(List<Update> updates) {
+    public static void check(List<ExtendedUpdate> updates) {
         for (Update update : updates) {
             assertTrue(update.getUpdateId() > 0);
             if (update.getMessage() != null) MessageTest.checkMessage(update.getMessage());
