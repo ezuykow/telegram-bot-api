@@ -1,5 +1,6 @@
 package kz.pandev.legrambotapi.configure.updates.handler;
 
+import kz.pandev.legrambotapi.addons.update.ExtendedUpdate;
 import kz.pandev.legrambotapi.models.types.Update;
 
 import java.util.List;
@@ -27,5 +28,5 @@ public interface UpdatesListener {
      * @see #CONFIRMED_UPDATES_ALL
      * @see #CONFIRMED_UPDATES_NONE
      */
-    int process(List<Update> updates);
+    int process(List<ExtendedUpdate> updates);
 }
