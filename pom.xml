@@ -44,6 +44,36 @@
         </dependency>
     </dependencies>
 
+    <repositories>
+        <repository>
+            <id>mirror</id>
+            <url>https://nexus.pandev.kz/repository/maven-central/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>spring-snapshots</id>
+            <name>Spring Snapshots</name>
+            <url>https://nexus.pandev.kz/repository/spring_snapshots/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>nexus</id>
+            <url>https://nexus.pandev.kz/repository/pandev-dev-jars/</url>
+        </repository>
+    </repositories>
+
+    <distributionManagement>
+        <repository>
+            <id>nexus</id>
+            <url>https://nexus.pandev.kz/repository/pandev-dev-jars/</url>
+        </repository>
+    </distributionManagement>
+
+
     <build>
         <plugins>
             <plugin>

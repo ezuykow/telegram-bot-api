@@ -1,0 +1,38 @@
+stages:
+  - build
+  - deploy_to_nexus
+
+variables:
+  MAVEN_OPTS: "-Dmaven.repo.local=${CI_PROJECT_DIR}/.m2/repository"
+  MAVEN_USER_SETTINGS: ${CI_PROJECT_DIR}/maven-settings.xml
+
+cache:
+  paths:
+    - ${CI_PROJECT_DIR}/.m2/repository
+  policy: pull-push
+
+build-job:
+  stage: build
+  script:
+    - mvn -s ${MAVEN_USER_SETTINGS} compile
+  artifacts:
+    paths:
+      - ${CI_PROJECT_DIR}/.m2/repository
+  only:
+    - merge_requests
+    - dev
+
+deploy-to-nexus-job:
+  stage: deploy_to_nexus
+  script:
+    - "mvn
+      -s ${MAVEN_USER_SETTINGS} 
+      deploy 
+      -DskipTests 
+      -DaltDeploymentRepository=nexus::default::${NEXUS_DEV_JARS} 
+      -Dmaven.repo.local=${CI_PROJECT_DIR}/.m2/repository 
+      -Dmaven.wagon.http.veryBadAuth=true 
+      -Dmaven.wagon.http.auth.username=${NEXUS_USERNAME} 
+      -Dmaven.wagon.http.auth.password=${NEXUS_PASSWORD}"
+  only:
+    - dev
