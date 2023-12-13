@@ -195,7 +195,7 @@ Example:
 bot.execute(new GetUpdates(), new Callback<GetUpdates, GetUpdatesResponse>{
         @Override
         public void onResponse(GetUpdates request, GetUpdatesResponse response) {
-            List<Update> updates = response.updates();
+            List<Update> updates = response.getUpdates();
             //processing...
         }
 
