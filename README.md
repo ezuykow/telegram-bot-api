@@ -1,92 +1,207 @@
-# Legram Bot Api
+# Legram Bot API
 
+Library for working with Telegram Bot API
 
+Full support of all Bot API 6.9 methods
 
-## Getting started
+---
+- [Connecting to the project](#connecting-to-the-project)
+- [Usage](#usage)
+    - [Creating TelegramBot instance](#creating-telegrambot-instance)
+      - [Simple TelegramBot](#simple-telegrambot)
+      - [Custom TelegramBot](#custom-telegrambot)
+    - [Making requests](#making-requests)
+      - [Request with response](#request-with-response)
+      - [Request with nested processing](#request-with-nested-processing)
+  - [Useful TelegramBot methods](#useful-telegrambot-methods)
+  - [Getting Update's](#getting-updates)
+    - [GetUpdates request](#getupdates-request)
+    - [Executing GetUpdates request](#executing-getupdates-request)
+      - [UpdatesListener](#updateslistener)
+      - [Webhook](#webhook)
+        - [Building request](#building-request)
+        - [Executing request](#executing-request)
+  - [Available types and methods](#available-types-and-methods)
+- [Request](#request)
+- [Response](#response)
+- [Callback](#callback)
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+# Connecting to the project
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+...
 
-## Add your files
+# Usage
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+## Creating TelegramBot instance
 
+### Simple TelegramBot
+
+1. TelegramBot with default Bot API server (https://api.telegram.org)
+```java
+TelegramBot bot = new TelegramBot("BOT_TOKEN");
 ```
-cd existing_repo
-git remote add origin http://git.pandev.kz/library/legram-bot-api.git
-git branch -M dev
-git push -uf origin dev
+
+2. TelegramBot with local Bot API server
+```java
+TelegramBot bot = new TelegramBot("BOT_TOKEN", "BOT_API_SERVER_URL");
 ```
 
-## Integrate with your tools
+### Custom TelegramBot
 
-- [ ] [Set up project integrations](http://git.pandev.kz/library/legram-bot-api/-/settings/integrations)
+To create a TelegramBot with custom parameters, use TelegramBot.Builder
+```java
+TelegramBot bot = new TelegramBot.Builder("BOT_TOKEN")
+        .apiServerUrl("BOT_API_SERVER_URL")
+        .okHttpClient(client)
+        .build();
+```
 
-## Collaborate with your team
+Parameters `.apiServerUrl` and `.okHttpClient` are unnecessary. If they are missing, the default values will be substituted.
+The `.okHttpClient` parameter accepts an object of the OkHttpClient class from library [OkHttp](https://github.com/square/okhttp)
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+Additional parameters for TelegramBot.Builder:
+```java
+.updatesHandlerSleepTime(millis) //Sleep time of UpdatesHandler for long polling bot in millis
+.httpClientBasicDebugMode() //Enable debug mode for default OkHttpClient with level "basic" (headers and body)
+.httpClientHeadersDebugMode() //Enable debug mode for default OkHttpClient with level "headers" (headers only)
+.httpClientBodyDebugMode() //Enable debug mode for default OkHttpClient with level "body" (body only)
+.httpClientDisableDebugMode() //Disable debug mode for default OkHttpClient
+```
 
-## Test and Deploy
+## Making requests
 
-Use the built-in continuous integration in GitLab.
+### Request with response
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+> [Response](#response) response = bot.execute([request](#request));
 
-***
+### Request with nested processing
 
-# Editing this README
+> bot.execute(request, [callback](#callback));
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
+## Useful TelegramBot methods
 
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+> `String getFullFilePath(File file)` - return full path to target file on Telegram bot API server\
+> `byte[] getFileContent(File file)` - return file content as byte array
 
-## Name
-Choose a self-explaining name for your project.
+## Getting Update's
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+### GetUpdates request
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+```java
+GetUpdates getUpdates = new GetUpdates()
+        .offset(0)
+        .limit(100)
+        .timeout(0)
+        .allowedUpdates(Collections.emptyList());
+```
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+About parameters:
+> `.offset(value)` - Optional. Receive identifier of the first update to be returned. Must be greater by one than the
+> highest among the identifiers of previously received updates. By default, updates starting with the earliest 
+> unconfirmed update are returned. An update is considered confirmed as soon as getUpdates is called with 
+> an offset higher than its update_id. The negative offset can be specified to retrieve updates starting from 
+> -offset update from the end of the updates queue. All previous updates will be forgotten.
+> 
+> `.limit(value)` - Optional. Receive int value, what limits the number of updates to be retrieved. Values between 
+> 1-100 are accepted. Defaults to 100.
+> 
+> `.timeout(value)` - Optional. Receive timeout in seconds for long polling. Defaults to 0, i.e. usual short polling. 
+> Should be positive, short polling should be used for testing purposes only.
+> 
+> `.allowedUpdates(value)` - Optional. Receive array of Strings of the update type names you want your bot to receive.
+> Specify an empty list to receive all update types except chat_member (default). If not specified, 
+> the previous setting will be used.
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+### Executing GetUpdates request
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+```java
+GetUpdatesResponse response = bot.execute(getUpdates);
+List<Update> updates = response.getUpdates();
+```
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+###  UpdatesListener
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+UpdatesListener - interface, which must be implemented by the incoming Update's handler.
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+You can set a listener to receive incoming updates as if using Webhook.\
+This will trigger executing getUpdates requests in a loop.
+There are few ways to set a listener:
+1. `bot.setUpdatesListener(listener, exceptionHandler, getUpdates);`
+2. `bot.setUpdatesListener(listener, exceptionHandler);` - using GetUpdates request with default parameters
+3. `bot.setUpdatesListener(listener, getUpdates);` - without ExceptionHandler
+4. `bot.setUpdatesListener(listener);` - without ExceptionHandler and using GetUpdates request with default parameters
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+> `listener` - instance of class, which implementing UpdatesListener interface \
+> `exceptionHandler` - instance of class, which implementing ExceptionHandler interface (interface, which must be 
+> implemented by handler of exceptions that occurs in UpdatesListener) \
+> `getUpdates` - instance of GetUpdates class (GetUpdates request)
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+Listener should return id of the last processed (confirmed) update.
+To confirm all updates return UpdatesListener.CONFIRMED_UPDATES_ALL, this should be enough in most cases.
+To not confirm any updates return UpdatesListener.CONFIRMED_UPDATES_NONE, these updates will be redelivered.
+To set a specific update as last confirmed, just return the required updateId.
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+To stop receiving updates use:
+```java
+bot.removeUpdatesListener();
+```
 
-## License
-For open source projects, say how it is licensed.
+### Webhook
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+Official [Guide to All Things Webhook](https://core.telegram.org/bots/webhooks)
+
+#### Building request
+If your application run on server that is able to handle TLS1.2(+) HTTPS-traffic:
+```java
+SetWebhook setWebhook = new SetWebhook().url("https://your_app_url");
+```
+If you use self-signed certificate:
+```java
+SetWebhook setWebhook = new SetWebhook().url("https://your_app_url")
+        .certificate(cert);
+//where `cert` - certificate as java.io.File or byte[]
+```
+#### Executing request
+
+To execute SetWebhook request use:
+```java
+bot.execute(setWebhook);
+```
+
+## Available types and methods
+All types and methods have the same name as [original ones](https://core.telegram.org/bots/api).
+
+# Request
+
+Request - abstract class, that is general request to Telegram bot API server.\
+All available methods extends it class.
+
+# Response
+
+Response - class, that is general Telegram bot API server response.\
+All available methods return a response extending this class when executed.\
+There are few general fields for all responses:
+1. `boolean ok` - True, if request was successful. In case of an unsuccessful request, 'ok' equals false and the error is explained in the 'description'
+2. `String description` - Optional. A human-readable description of the result
+3. `Integer errorCode` - Optional. Code of error if request is unsuccessful
+4. `ResponseParameters parameters` - Optional. Describes why a request was unsuccessful
+
+# Callback
+
+Callback - interface for executing request's with custom processing. It's handler of request result with methods 
+onResponse (when request executed successfully) and onFailure (when request executed unsuccessfully).\
+Example:
+```java
+bot.execute(new GetUpdates(), new Callback<GetUpdates, GetUpdatesResponse>{
+        @Override
+        public void onResponse(GetUpdates request, GetUpdatesResponse response) {
+            List<Update> updates = response.updates();
+            //processing...
+        }
+
+        @Override
+        public void onFailure(GetUpdates request, Exception e) {
+            //When request executing is unseccessful...
+        }
+});
+```

@@ -158,7 +158,7 @@ public class TelegramBot {
     /**
      * Stop an updates handler
      */
-    public void removeGetUpdatesListener() {
+    public void removeUpdatesListener() {
         updatesHandler.stop();
     }
 

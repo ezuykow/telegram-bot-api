@@ -1,13 +1,8 @@
 package kz.pandev.legrambotapi.configure;
 
 import kz.pandev.legrambotapi.Config;
-import kz.pandev.legrambotapi.configure.updates.handler.UpdatesListener;
-import kz.pandev.legrambotapi.exceptions.handler.ExceptionHandler;
 import kz.pandev.legrambotapi.models.requests.common.get.GetUpdates;
-import kz.pandev.legrambotapi.models.types.Update;
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -29,7 +24,7 @@ class TelegramBotTest {
         bot.setUpdatesListener(updates -> 0);
         bot.setUpdatesListener(updates -> 0, new GetUpdates());
         bot.setUpdatesListener(updates -> 0, e -> {});
-        bot.removeGetUpdatesListener();
+        bot.removeUpdatesListener();
         bot.shutdown();
         assertNotNull(bot);
     }
