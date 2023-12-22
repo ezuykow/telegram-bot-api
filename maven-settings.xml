@@ -6,4 +6,11 @@
             <password>1234567890Qq</password>
         </server>
     </servers>
+    <mirrors>
+        <mirror>
+            <id>central-mirror</id>
+            <url>http://192.168.0.206:8081/repository/maven-central/</url>
+            <mirrorOf>*</mirrorOf>
+        </mirror>
+    </mirrors>
 </settings>
