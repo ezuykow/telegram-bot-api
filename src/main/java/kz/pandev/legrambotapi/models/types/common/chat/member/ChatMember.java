@@ -99,7 +99,7 @@ public class ChatMember implements Serializable {
      */
     @SerializedName("until_date")
     @Nullable
-    private Boolean untilDate;
+    private Integer untilDate;
 
     /**
      * Optional. True, if the bot is allowed to edit administrator privileges of that user
